@@ -8,37 +8,32 @@ import com.squareup.timessquare.CalendarPickerView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
 public class CalendarActivity extends AppCompatActivity {
 
-    List<List<String>> birthdays;
+    List<List<String>> events;
+    Collection<Date> allDates;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
-        birthdays = new ArrayList<List<String>>();
-        List<String> n = new ArrayList<>();
-        n.add("9 21");
-        n.add("Konce's birthday");
-        List<String> b = new ArrayList<>();
-        b.add("7 29");
-        b.add("Grace's birthday");
-        System.out.println(n);
-        System.out.println(b);
-        birthdays.add(n);
-        birthdays.add(b);
-        System.out.println(birthdays);
+        events = new ArrayList<List<String>>();
+
+        addEvent("9 21", "Grace's birthday");
+        addEvent("7 29", "Konce's birthday");
 
         Date today = new Date();
         Calendar nextYear = Calendar.getInstance();
         nextYear.add(Calendar.YEAR, 1);
 
-        CalendarPickerView datePicker = findViewById(R.id.calendar);
+        final CalendarPickerView datePicker = findViewById(R.id.calendar);
         datePicker.init(today, nextYear.getTime())
-                .withSelectedDate(today);
+                  .withSelectedDate(today);
+
 
         datePicker.setOnDateSelectedListener(new CalendarPickerView.OnDateSelectedListener() {
             @Override
@@ -51,11 +46,13 @@ public class CalendarActivity extends AppCompatActivity {
 
                 String selectedDate = "" + (calSelected.get(Calendar.MONTH) + 1)
                         + " " + calSelected.get(Calendar.DAY_OF_MONTH);
-                        //+ " " + calSelected.get(Calendar.YEAR);
 
-                for(List<String> s: birthdays) {
+                for(List<String> s: events) {
                     if (s.get(0).equals(selectedDate)) {
                         event = true;
+                        Collection<Date> d = new ArrayList<>();
+                        d.add(date);
+                        datePicker.highlightDates(d);
                         Toast.makeText(CalendarActivity.this, s.get(1), Toast.LENGTH_LONG).show();
                     }
                 }
@@ -70,5 +67,16 @@ public class CalendarActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void addEvent(String day, String name){
+        List<String> temp = new ArrayList<>();
+        temp.add(day);
+        temp.add(name);
+        events.add(temp);
+    }
+
+    public void addEvent(String day){
+
     }
 }
