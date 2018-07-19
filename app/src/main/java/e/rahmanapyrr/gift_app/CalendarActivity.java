@@ -22,9 +22,24 @@ public class CalendarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
         events = new ArrayList<List<String>>();
+        allDates = new ArrayList<>();
 
-        addEvent("9 21", "Grace's birthday");
-        addEvent("7 29", "Konce's birthday");
+        addEvent("8 12", "Grace's birthday");
+        addEvent("2 10", "Konce's birthday");
+        addEvent("3 10", "Konce's birthday");
+        addEvent("4 10", "Konce's birthday");
+        addEvent("5 10", "Konce's birthday");
+        addEvent("6 10", "Konce's birthday");
+        addEvent("7 10", "Konce's birthday");
+        addEvent("8 10", "Konce's birthday");
+        addEvent("9 10", "Konce's birthday");
+        addEvent("10 10", "Konce's birthday");
+        addEvent("11 10", "Konce's birthday");
+        addEvent("12 10", "Konce's birthday");
+
+        convertDate("8 12");
+        System.out.println(allDates);
+
 
         Date today = new Date();
         Calendar nextYear = Calendar.getInstance();
@@ -33,6 +48,8 @@ public class CalendarActivity extends AppCompatActivity {
         final CalendarPickerView datePicker = findViewById(R.id.calendar);
         datePicker.init(today, nextYear.getTime())
                   .withSelectedDate(today);
+
+        datePicker.highlightDates(allDates);
 
 
         datePicker.setOnDateSelectedListener(new CalendarPickerView.OnDateSelectedListener() {
@@ -52,6 +69,7 @@ public class CalendarActivity extends AppCompatActivity {
                         event = true;
                         Collection<Date> d = new ArrayList<>();
                         d.add(date);
+                        System.out.println(date);
                         datePicker.highlightDates(d);
                         Toast.makeText(CalendarActivity.this, s.get(1), Toast.LENGTH_LONG).show();
                     }
@@ -76,7 +94,15 @@ public class CalendarActivity extends AppCompatActivity {
         events.add(temp);
     }
 
-    public void addEvent(String day){
+    public void convertDate(String day){
+        String[] elements = day.split(" ");
+        String monthNum = elements[0];
+        System.out.println(monthNum);
+        String dayz = elements[1];
+        System.out.println(dayz);
+        Date f = new Date(118, Integer.parseInt(monthNum) - 1, Integer.parseInt(dayz));
+        System.out.println(f.toString());
+        allDates.add(f);
 
     }
 }
