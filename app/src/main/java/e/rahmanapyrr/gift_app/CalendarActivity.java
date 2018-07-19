@@ -16,6 +16,7 @@ public class CalendarActivity extends AppCompatActivity {
 
     List<List<String>> events;
     Collection<Date> allDates;
+    List<List<String>> birthdays;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,7 @@ public class CalendarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calendar);
         events = new ArrayList<List<String>>();
         allDates = new ArrayList<>();
+        birthdays = new ArrayList<List<String>>();
 
         addEvent("8 12", "Grace's birthday");
         addEvent("2 10", "Konce's birthday");
@@ -37,13 +39,16 @@ public class CalendarActivity extends AppCompatActivity {
         addEvent("11 10", "Konce's birthday");
         addEvent("12 10", "Konce's birthday");
 
-        convertDate("8 12");
-        System.out.println(allDates);
-
 
         Date today = new Date();
         Calendar nextYear = Calendar.getInstance();
         nextYear.add(Calendar.YEAR, 1);
+
+        convertDate("8 12", today);
+        convertDate("2 10", today);
+        convertDate("3 14", today);
+        convertDate("7 17", today);
+        System.out.println(allDates);
 
         final CalendarPickerView datePicker = findViewById(R.id.calendar);
         datePicker.init(today, nextYear.getTime())
@@ -69,7 +74,6 @@ public class CalendarActivity extends AppCompatActivity {
                         event = true;
                         Collection<Date> d = new ArrayList<>();
                         d.add(date);
-                        System.out.println(date);
                         datePicker.highlightDates(d);
                         Toast.makeText(CalendarActivity.this, s.get(1), Toast.LENGTH_LONG).show();
                     }
@@ -94,15 +98,27 @@ public class CalendarActivity extends AppCompatActivity {
         events.add(temp);
     }
 
-    public void convertDate(String day){
+    public void convertDate(String day, Date today){
         String[] elements = day.split(" ");
         String monthNum = elements[0];
-        System.out.println(monthNum);
+        int month = Integer.parseInt(monthNum);
         String dayz = elements[1];
+        int days = Integer.parseInt(dayz);
+        Date event;
+        System.out.println(month - 1);
+        System.out.println(today.getMonth());
         System.out.println(dayz);
-        Date f = new Date(118, Integer.parseInt(monthNum) - 1, Integer.parseInt(dayz));
-        System.out.println(f.toString());
-        allDates.add(f);
+        System.out.println(today.getDate());
+        if(today.getMonth() > month) {
+            event = new Date(119, month - 1, Integer.parseInt(dayz));
+        }
+        else if(today.getMonth() == (month-1) && today.getDate() > days){
+            event = new Date(119, month - 1, days);
+        }
+        else{
+            event = new Date(118, month - 1, days);
+        }
+        allDates.add(event);
 
     }
 }
