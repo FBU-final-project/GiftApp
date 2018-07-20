@@ -2,8 +2,12 @@ package e.rahmanapyrr.gift_app;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.Toast;
 
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
 import com.squareup.timessquare.CalendarPickerView;
 
 import java.util.ArrayList;
@@ -14,11 +18,12 @@ import java.util.List;
 
 public class CalendarActivity extends AppCompatActivity {
 
-    //private static final String AUTHORITY = "e.rahmanapyrr.gift_app";
+    private static final String AUTHORITY = "e.rahmanapyrr.gift_app";
 
     List<List<String>> events;
     Collection<Date> allDates;
     List<List<String>> birthdays;
+    Collection<User> b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,35 +32,19 @@ public class CalendarActivity extends AppCompatActivity {
         events = new ArrayList<List<String>>();
         allDates = new ArrayList<>();
         birthdays = new ArrayList<List<String>>();
+        b = new ArrayList<>();
 
-        //final ParseUser user = ParseUser
-
-        /*
-        addEvent("8 12", "Grace's birthday");
-        addEvent("2 10", "Konce's birthday");
-        addEvent("3 10", "Konce's birthday");
-        addEvent("4 10", "Konce's birthday");
-        addEvent("5 10", "Konce's birthday");
-        addEvent("6 10", "Konce's birthday");
-        addEvent("7 10", "Konce's birthday");
-        addEvent("8 10", "Konce's birthday");
-        addEvent("9 10", "Konce's birthday");
-        addEvent("10 10", "Konce's birthday");
-        addEvent("11 10", "Konce's birthday");
-        addEvent("12 10", "Konce's birthday");
-        */
 
         Date today = new Date();
         Calendar nextYear = Calendar.getInstance();
         nextYear.add(Calendar.YEAR, 1);
 
-        /*
-        convertDate("8 12", today);
-        convertDate("2 10", today);
-        convertDate("3 14", today);
-        convertDate("7 17", today);
-        System.out.println(allDates);
-        */
+        getParseEvents();
+        System.out.println(b);
+        for(User u : b){
+            System.out.println(u.getBirthday());
+        }
+
 
         final CalendarPickerView datePicker = findViewById(R.id.calendar);
         datePicker.init(today, nextYear.getTime())
@@ -98,6 +87,7 @@ public class CalendarActivity extends AppCompatActivity {
         });
     }
 
+
     public void addEvent(String day, String name){
         List<String> temp = new ArrayList<>();
         temp.add(day);
@@ -128,4 +118,20 @@ public class CalendarActivity extends AppCompatActivity {
         allDates.add(event);
 
     }
+
+    public void getParseEvents(){
+        ParseQuery<User> query = ParseQuery.getQuery(User.class);
+        query.findInBackground(new FindCallback<User>() {
+            public void done(List<User> itemList, ParseException e) {
+                if (e == null) {
+                    // Access the array of results here
+                    b.addAll(itemList);
+                    //Friend_adapter.notifyDataSetChanged();
+                } else {
+                    Log.d("item", "Error: " + e.getMessage());
+                }
+            }
+        });
+    }
+
 }
