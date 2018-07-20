@@ -14,6 +14,8 @@ import java.util.List;
 
 public class CalendarActivity extends AppCompatActivity {
 
+    //private static final String AUTHORITY = "e.rahmanapyrr.gift_app";
+
     List<List<String>> events;
     Collection<Date> allDates;
     List<List<String>> birthdays;
@@ -26,6 +28,9 @@ public class CalendarActivity extends AppCompatActivity {
         allDates = new ArrayList<>();
         birthdays = new ArrayList<List<String>>();
 
+        //final ParseUser user = ParseUser
+
+        /*
         addEvent("8 12", "Grace's birthday");
         addEvent("2 10", "Konce's birthday");
         addEvent("3 10", "Konce's birthday");
@@ -38,17 +43,19 @@ public class CalendarActivity extends AppCompatActivity {
         addEvent("10 10", "Konce's birthday");
         addEvent("11 10", "Konce's birthday");
         addEvent("12 10", "Konce's birthday");
-
+        */
 
         Date today = new Date();
         Calendar nextYear = Calendar.getInstance();
         nextYear.add(Calendar.YEAR, 1);
 
+        /*
         convertDate("8 12", today);
         convertDate("2 10", today);
         convertDate("3 14", today);
         convertDate("7 17", today);
         System.out.println(allDates);
+        */
 
         final CalendarPickerView datePicker = findViewById(R.id.calendar);
         datePicker.init(today, nextYear.getTime())
@@ -110,7 +117,7 @@ public class CalendarActivity extends AppCompatActivity {
         System.out.println(dayz);
         System.out.println(today.getDate());
         if(today.getMonth() > month) {
-            event = new Date(119, month - 1, Integer.parseInt(dayz));
+            event = new Date(119, month - 1, days);
         }
         else if(today.getMonth() == (month-1) && today.getDate() > days){
             event = new Date(119, month - 1, days);
