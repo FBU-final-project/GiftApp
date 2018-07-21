@@ -18,3 +18,6 @@ Login to Facebook → click on gift icon on the left → add to selected friend�
 Login → click payment → click add payment method → enter card/billing info → click save
 Login → click Holiday calendar (Christmas and wherever else you give gifts)
 Login → Click notifications → select which dates you want to be notified 3 weeks before (birthdays, anniversaries, christmas, etc). → 3 weeks before event receive push notification reminder
+
+Konce's walkthrough:
+<img src='https://github.com/FBU-final-project/GiftApp/blob/KonceDevelopment/calendarWalkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
