@@ -24,4 +24,5 @@ Konce's walkthrough:
 
 
 Ari's walkthrough:
-<img src='https://i.imgur.com/5KxvvxT.gifv' title='Video walkthrough' width='' alt='Video walkthrough' />
+
+<img src='https://i.imgur.com/5KxvvxT.gif' title='Video walkthrough' width='' alt='Video walkthrough' />
