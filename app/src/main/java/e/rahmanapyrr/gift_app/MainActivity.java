@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 login();
+                finish();
             }
         });
 
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private void login() {
         final Intent intent = new Intent(MainActivity.this, AddFriends.class);
         startActivity(intent);
+        finish();
 
     }
 
