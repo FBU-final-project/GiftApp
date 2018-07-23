@@ -26,3 +26,7 @@ Konce's walkthrough:
 Ari's walkthrough:
 
 <img src='https://i.imgur.com/5KxvvxT.gif' title='Video walkthrough' width='' alt='Video walkthrough' />
+
+Rahmana's Walkthrough
+
+<img src='https://github.com/FBU-final-project/GiftApp/blob/Rahmana_branch/AddFriends.gif' title='Add Friends' width='' alt='Video Walkthrough' />
