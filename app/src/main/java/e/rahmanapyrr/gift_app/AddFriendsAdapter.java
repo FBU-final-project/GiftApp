@@ -53,8 +53,6 @@ public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.Vi
             //holder.tvDate.setText(getRelativeTimeAgo(post.getCreatedAt().toString()));
 
             holder.Friend.setText(user.getUsername());
-
-
         }
 
         @Override
