@@ -1,13 +1,13 @@
 package e.rahmanapyrr.gift_app;
 
 import com.parse.ParseClassName;
-import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
-@ParseClassName("User")
-public class User extends ParseObject{
+@ParseClassName("_User")
+public class User extends ParseUser {
 
-    private static final String KEY_BIRTHDAY = "birthday";
+    private static final String KEY_BIRTHDAY = "birthdayString";
 
     public String getBirthday() { return getString(KEY_BIRTHDAY);}
 
