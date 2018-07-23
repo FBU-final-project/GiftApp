@@ -21,3 +21,7 @@ Login → Click notifications → select which dates you want to be notified 3 w
 
 Konce's walkthrough:
 <img src='https://github.com/FBU-final-project/GiftApp/blob/KonceDevelopment/calendarWalkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+
+Ari's walkthrough:
+<img src='https://i.imgur.com/5KxvvxT.gifv' title='Video walkthrough' width='' alt='Video walkthrough' />
