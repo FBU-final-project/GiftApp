@@ -30,3 +30,5 @@ Ari's walkthrough:
 Rahmana's Walkthrough
 
 <img src='https://github.com/FBU-final-project/GiftApp/blob/Rahmana_branch/AddFriends.gif' title='Add Friends' width='' alt='Video Walkthrough' />
+
+<img src='https://github.com/FBU-final-project/GiftApp/blob/Rahmana_branch/CurrentFriends.gif' title='Add Friends' width='' alt='Video Walkthrough' />
