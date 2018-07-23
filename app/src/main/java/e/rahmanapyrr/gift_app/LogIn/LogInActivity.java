@@ -25,7 +25,6 @@ public class LogInActivity extends AppCompatActivity {
     private Button loginButton;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,9 +42,9 @@ public class LogInActivity extends AppCompatActivity {
             public void onClick(View view) {
                 final Intent intent = new Intent(LogInActivity.this, RegisterActivity.class);
                 startActivity(intent);
+               // finish();
             }
         });
-
 
 
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -60,21 +59,24 @@ public class LogInActivity extends AppCompatActivity {
         });
 
 
-
     }
 
 
-
-    private void login(String username, String password){
+    private void login(String username, String password) {
 
         ParseUser.logInInBackground(username, password, new LogInCallback() {
             @Override
             public void done(ParseUser user, ParseException e) {
-                if(e == null){
+                if (e == null) {
                     Log.d("LoginActivity", "Login Successful!");
-                    final Intent intent = new Intent(LogInActivity.this, RegisterActivity.class);
-                    startActivity(intent);
-                    finish();
+
+                    Toast.makeText(LogInActivity.super.getBaseContext(), "LOGIN SUCCESS!", Toast.LENGTH_LONG).show();
+
+
+
+                    //final Intent intent = new Intent(LogInActivity.this, RegisterActivity.class);
+                    //startActivity(intent);
+                    //finish();
                 } else {
                     Log.e("LoginActivity", "Login Failure");
                     Toast.makeText(LogInActivity.super.getBaseContext(), "Login Failure", Toast.LENGTH_SHORT).show();
@@ -87,12 +89,10 @@ public class LogInActivity extends AppCompatActivity {
     }
 
 
-    private void register(){
+    private void register() {
         final Intent intent = new Intent(LogInActivity.this, RegisterActivity.class);
         startActivity(intent);
     }
-
-
 
 
 }
