@@ -14,6 +14,7 @@ import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 
+import e.rahmanapyrr.gift_app.CalendarActivity;
 import e.rahmanapyrr.gift_app.R;
 
 public class LogInActivity extends AppCompatActivity {
@@ -70,13 +71,12 @@ public class LogInActivity extends AppCompatActivity {
                 if (e == null) {
                     Log.d("LoginActivity", "Login Successful!");
 
+                    final Intent intent = new Intent(LogInActivity.this, CalendarActivity.class);
+                    startActivity(intent);
+                    finish();
+
                     Toast.makeText(LogInActivity.super.getBaseContext(), "LOGIN SUCCESS!", Toast.LENGTH_LONG).show();
 
-
-
-                    //final Intent intent = new Intent(LogInActivity.this, RegisterActivity.class);
-                    //startActivity(intent);
-                    //finish();
                 } else {
                     Log.e("LoginActivity", "Login Failure");
                     Toast.makeText(LogInActivity.super.getBaseContext(), "Login Failure", Toast.LENGTH_SHORT).show();
