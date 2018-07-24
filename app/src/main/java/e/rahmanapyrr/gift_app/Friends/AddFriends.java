@@ -1,4 +1,4 @@
-package e.rahmanapyrr.gift_app;
+package e.rahmanapyrr.gift_app.Friends;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -14,6 +14,9 @@ import com.parse.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+import e.rahmanapyrr.gift_app.AddFriendsAdapter;
+import e.rahmanapyrr.gift_app.CurrentUserFriends;
+import e.rahmanapyrr.gift_app.R;
 import e.rahmanapyrr.gift_app.models.User;
 
 
