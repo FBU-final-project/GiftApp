@@ -1,4 +1,4 @@
-package e.rahmanapyrr.gift_app;
+package e.rahmanapyrr.gift_app.Friends;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.parse.ParseUser;
 
 import java.util.List;
+
+import e.rahmanapyrr.gift_app.R;
 
 public class CurrentUserFriendsAdapter extends RecyclerView.Adapter<CurrentUserFriendsAdapter.ViewHolder> {
 
