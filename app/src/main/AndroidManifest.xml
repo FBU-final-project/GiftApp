@@ -17,20 +17,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-
         <activity android:name=".LogIn.RegisterBirthdayActivity" />
         <activity android:name=".LogIn.RegisterActivity"/>
         <activity android:name=".LogIn.RegisterNameActivity"/>
-
-
-        <activity android:name=".AddFriends">
-
-        </activity>
-        <activity android:name=".CurrentUserFriends">
-
-        </activity>
+        <activity android:name=".AddFriends"></activity>
+        <activity android:name=".CalendarActivity" />
+        <activity android:name=".CurrentUserFriends" />
         <activity android:name=".DetailActivity">
 
         </activity>
