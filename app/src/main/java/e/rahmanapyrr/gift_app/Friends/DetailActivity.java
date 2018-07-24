@@ -1,4 +1,4 @@
-package e.rahmanapyrr.gift_app;
+package e.rahmanapyrr.gift_app.Friends;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+
+import e.rahmanapyrr.gift_app.R;
 
 public class DetailActivity extends AppCompatActivity{
 
