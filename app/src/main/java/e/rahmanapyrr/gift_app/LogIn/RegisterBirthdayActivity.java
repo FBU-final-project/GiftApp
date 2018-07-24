@@ -54,11 +54,10 @@ public class RegisterBirthdayActivity extends AppCompatActivity implements DateP
         System.out.println("LAST NAME: " + lastname);
 
 
-        dateSpinner = (Spinner)findViewById(R.id.sBirthdate);
+        dateSpinner = (Spinner) findViewById(R.id.sBirthdate);
         finishButton = findViewById(R.id.registerFinish);
         dateSelectorButton = findViewById(R.id.bDateSelector);
         selectedDate = findViewById(R.id.tvCurrentDate);
-
 
 
         finishButton.setOnClickListener(new View.OnClickListener() {
@@ -75,11 +74,10 @@ public class RegisterBirthdayActivity extends AppCompatActivity implements DateP
         });
 
 
-
         View.OnTouchListener Button_OnTouch = new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                if(motionEvent.getAction() == MotionEvent.ACTION_UP){
+                if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                     showDatePickerDialog(view);
                 }
                 return true;
@@ -89,7 +87,7 @@ public class RegisterBirthdayActivity extends AppCompatActivity implements DateP
         View.OnKeyListener Button_OnKey = new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
-                if(i == KeyEvent.KEYCODE_DPAD_CENTER){
+                if (i == KeyEvent.KEYCODE_DPAD_CENTER) {
                     showDatePickerDialog(view);
                     return true;
                 } else {
@@ -105,18 +103,18 @@ public class RegisterBirthdayActivity extends AppCompatActivity implements DateP
         // FOR THE SPINNER
 
 
-        View.OnTouchListener Spinner_OnTouch = new View.OnTouchListener(){
-            public boolean onTouch(View v, MotionEvent event){
-                if (event.getAction() == MotionEvent.ACTION_UP){
+        View.OnTouchListener Spinner_OnTouch = new View.OnTouchListener() {
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_UP) {
                     showDatePickerDialog(v);
                 }
                 return true;
             }
         };
 
-        View.OnKeyListener Spinner_OnKey = new View.OnKeyListener(){
-            public boolean onKey(View v, int keyCode, KeyEvent event){
-                if(keyCode == KeyEvent.KEYCODE_DPAD_CENTER){
+        View.OnKeyListener Spinner_OnKey = new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER) {
                     showDatePickerDialog(v);
                     return true;
                 } else {
@@ -129,12 +127,10 @@ public class RegisterBirthdayActivity extends AppCompatActivity implements DateP
         dateSpinner.setOnKeyListener(Spinner_OnKey);
 
 
-
-
     }
 
 
-    public void showDatePickerDialog(View v){
+    public void showDatePickerDialog(View v) {
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getSupportFragmentManager(), "Date");
     }
@@ -152,13 +148,7 @@ public class RegisterBirthdayActivity extends AppCompatActivity implements DateP
     }
 
 
-
-
-
-
-
-
-    private void SignUp(String username, String password, String firstname, String lastname, String birthday){
+    private void SignUp(String username, String password, String firstname, String lastname, String birthday) {
         // Create a Parse User
         ParseUser user = new ParseUser();
 
@@ -173,13 +163,13 @@ public class RegisterBirthdayActivity extends AppCompatActivity implements DateP
         user.signUpInBackground(new SignUpCallback() {
             @Override
             public void done(ParseException e) {
-                if(e == null){
+                if (e == null) {
                     // Hooray! User registered
                     Log.d("RegisterActivity", "Congrats you're Registered!");
 
                     final Intent intent = new Intent(RegisterBirthdayActivity.this, LogInActivity.class);
-                    startActivity(intent);
                     Toast.makeText(RegisterBirthdayActivity.super.getBaseContext(), "REGISTERED!", Toast.LENGTH_SHORT);
+                    startActivity(intent);
                     finish();
 
 
@@ -193,9 +183,6 @@ public class RegisterBirthdayActivity extends AppCompatActivity implements DateP
         });
 
     }
-
-
-
 
 
 }
