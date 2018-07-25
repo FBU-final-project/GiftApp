@@ -73,7 +73,7 @@ public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.Vi
                 Friend = (TextView)itemView.findViewById(R.id.friendNameOption);
                 AddFriendbtn = (Button) itemView.findViewById(R.id.addFriendbtn);
 
-///add friends///-----------------------------------
+///add friends///
                AddFriendbtn.setOnClickListener(new View.OnClickListener() {
                    @Override
                    public void onClick(View view) {
@@ -124,7 +124,7 @@ public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.Vi
 
                    }
                });
- ///button to add friends------------------------------------------
+ ///button to add friends
 
 
                 itemView.setOnClickListener(this);
