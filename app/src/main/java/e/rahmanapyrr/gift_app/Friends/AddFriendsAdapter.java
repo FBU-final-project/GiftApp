@@ -69,7 +69,7 @@ public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.Vi
         public Button AddFriendbtn;
 
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull final View itemView) {
             super(itemView);
             Friend = (TextView) itemView.findViewById(R.id.friendNameOption);
             AddFriendbtn = (Button) itemView.findViewById(R.id.addFriendbtn);
@@ -79,62 +79,32 @@ public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.Vi
                 @Override
                 public void onClick(View view) {
                     final ParseUser user = Users.get(getAdapterPosition());
+                    ParseUser currentUserClass = ParseUser.getCurrentUser();
 
-                    final ArrayList<Post> posts;
-                    posts = new ArrayList<>();
-
-                    final Post.Query postQuery = new Post.Query();
-                    postQuery.whereEqualTo("user", ParseUser.getCurrentUser());
-
-                    postQuery.orderByDescending("createdAt").findInBackground(new FindCallback<Post>() {
+                    ParseRelation<ParseUser> friends = currentUserClass.getRelation("FriendRelation");
+                    friends.add(user);
+                    currentUserClass.saveInBackground(new SaveCallback() {
                         @Override
-                        public void done(List<Post> objects, ParseException e) {
+                        public void done(ParseException e) {
                             if (e == null) {
-                                posts.addAll(objects);
-                                Post currentUserClass = posts.get(0);
-
-                                try {
-                                    System.out.println("Hey" + currentUserClass.getUser().fetchIfNeeded().getUsername());
-                                } catch (ParseException e1) {
-                                    e1.printStackTrace();
+                                Log.d("dept", "saved");
+                                } else {
+                                Log.d("dept", "Error: " + e.getMessage());
                                 }
-                                System.out.println("hey " + user.getUsername());
 
-                                currentUserClass.addUnique("friends_array", user);
-                                currentUserClass.saveEventually();
-
-                                ParseRelation<ParseUser> friends = currentUserClass.getRelation("FriendRelation");
-                                friends.add(user);
-                                currentUserClass.saveInBackground(new SaveCallback() {
-                                    @Override
-                                    public void done(ParseException e) {
-                                        if (e == null) {
-                                            Log.d("dept", "saved");
-                                        } else {
-                                            Log.d("dept", "Error: " + e.getMessage());
-                                        }
-
-                                    }
+                                }
                                 });
+                    }
 
-                            } else {
-                                e.printStackTrace();
-                            }
-                        }
-                    });
-
-                }
+                                                ///button to add friends------------------------------------------
             });
-            ///button to add friends------------------------------------------
-
-
-            itemView.setOnClickListener(this);
-        }
 
         //when the user clicks on a row, show MovieDetailsActivity for the selected movie
-        @Override
-        public void onClick(View v) {
+                    itemView.setOnClickListener(this);
+        }
 
+        @Override
+        public void onClick(View view) {
             int position = getAdapterPosition();
             // make sure the position is valid, i.e. actually exists in the view
             if (position != RecyclerView.NO_POSITION) {
@@ -146,10 +116,10 @@ public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.Vi
 
                 intent.putExtra("username", user.getUsername());
                 context.startActivity(intent);
-            }
-
         }
     }
+    }
+
 
     // Clean all elements of the recycler
     public void clear() {
@@ -164,3 +134,5 @@ public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.Vi
     }
 
 }
+
+
