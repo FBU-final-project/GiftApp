@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Gift_app</string>
+    <string name="navAddFriends">Add Friends</string>
+    <string name="navCurrentFriends">My Friends</string>
+    <string name="navCalender">Calender</string>
+    <string name="Open">open</string>
+    <string name="Close">close</string>
 </resources>

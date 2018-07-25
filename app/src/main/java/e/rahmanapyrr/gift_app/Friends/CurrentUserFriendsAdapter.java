@@ -53,7 +53,6 @@ public class CurrentUserFriendsAdapter extends RecyclerView.Adapter<CurrentUserF
             Username = (TextView)itemView.findViewById(R.id.currentFriendName);
 
             itemView.setOnClickListener(this);
-
         }
 
         @Override
