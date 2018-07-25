@@ -140,7 +140,7 @@ public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.Vi
                     // get the movie at the position, this won't work if the class is static
                     ParseUser user = Users.get(position);
                     // create intent for the new activity
-                    Intent intent = new Intent(context, DetailActivity.class);
+                    Intent intent = new Intent(context, ProfileActivity.class);
                     // serialize the movie using parceler, use its short name as a key
 
                     intent.putExtra("username", user.getUsername());

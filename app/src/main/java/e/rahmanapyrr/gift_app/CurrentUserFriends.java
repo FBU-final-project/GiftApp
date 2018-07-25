@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Menu;
 import android.view.View;
 
 import com.parse.FindCallback;
@@ -15,8 +14,6 @@ import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import e.rahmanapyrr.gift_app.models.Post;
 
 
 public class CurrentUserFriends extends AppCompatActivity {
@@ -39,37 +36,24 @@ public class CurrentUserFriends extends AppCompatActivity {
     }
 
     public void populateTimeline() {
-        final Post.Query postQuery = new Post.Query();
-        postQuery.whereEqualTo("user", ParseUser.getCurrentUser());
-        final ArrayList<Post> posts;
-        posts = new ArrayList<>();
-        postQuery.orderByDescending("createdAt").findInBackground(new FindCallback<Post>() {
+        ParseUser currentUserClass = ParseUser.getCurrentUser();
+
+        final ParseRelation<ParseUser> friend_relations = currentUserClass.getRelation("FriendRelation");
+        ParseQuery<ParseUser> friends_list = friend_relations.getQuery();
+        friends_list.findInBackground(new FindCallback<ParseUser>() {
             @Override
-            public void done(List<Post> objects, com.parse.ParseException e) {
+            public void done(List<ParseUser> objects, com.parse.ParseException e) {
                 if (e == null) {
-                    posts.addAll(objects);
-                    Post currentUserClass = posts.get(0);
-
-                    final ParseRelation<ParseUser> friend_relations = currentUserClass.getRelation("FriendRelation");
-                    ParseQuery<ParseUser> friends_list = friend_relations.getQuery();
-                    friends_list.findInBackground(new FindCallback<ParseUser>() {
-                        @Override
-                        public void done(List<ParseUser> objects, com.parse.ParseException e) {
-                            if (e == null) {
-                                friends.clear();
-                                friends.addAll(objects);
-                                adapter.notifyDataSetChanged();
-                            } else {
-                                e.printStackTrace();
-                            }
-                        }
-
-                    });
+                    friends.clear();
+                    friends.addAll(objects);
+                    adapter.notifyDataSetChanged();
+                } else {
+                    e.printStackTrace();
                 }
             }
         });
-
     }
+
 
     public void goAddFriends(View view) {
         Intent i = new Intent(CurrentUserFriends.this, AddFriends.class);

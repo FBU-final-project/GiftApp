@@ -1,6 +1,7 @@
 package e.rahmanapyrr.gift_app;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -57,6 +58,24 @@ public class CurrentUserFriendsAdapter extends RecyclerView.Adapter<CurrentUserF
         @Override
         public void onClick(View view) {
             int position = getAdapterPosition();
+            if(position != RecyclerView.NO_POSITION){
+                ParseUser user = CurrFriends.get(position);
+                Intent i = new Intent(context, ProfileActivity.class);
+                i.putExtra("username", user.getUsername());
+                //i.putExtra("photo", user.getImage().getUrl());
+                i.putExtra("firstname", user.getString("firstname"));
+                i.putExtra("lastname", user.getString("lastname"));
+                i.putExtra("birthday", user.getString("birthdayString"));
+                /*
+                if(post.getProfilePic() != null) {
+                    i.putExtra("icon", post.getProfilePic().getUrl());
+                }
+                else{
+                    i.putExtra("icon", "");
+                }
+                */
+                context.startActivity(i);
+            }
         }
     }
 

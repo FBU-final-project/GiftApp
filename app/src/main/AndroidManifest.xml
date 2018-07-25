@@ -25,7 +25,5 @@
         <activity android:name=".Calendar.CalendarActivity" />
         <activity android:name=".ProfileActivity"></activity>
         <activity android:name=".CurrentUserFriends" />
-        <activity android:name=".DetailActivity">
-        </activity>
     </application>
 </manifest>
