@@ -5,15 +5,20 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -24,6 +29,7 @@ import com.parse.SaveCallback;
 import java.util.ArrayList;
 import java.util.List;
 
+import e.rahmanapyrr.gift_app.Calendar.CalendarActivity;
 import e.rahmanapyrr.gift_app.R;
 import e.rahmanapyrr.gift_app.models.Post;
 import e.rahmanapyrr.gift_app.models.User;
@@ -35,10 +41,43 @@ public class AddFriends extends AppCompatActivity{
     RecyclerView rvfriendNameOption;
     Bitmap.Config config;
 //    private SwipeRefreshLayout swipeContainer;
+    private DrawerLayout dl;
+    private ActionBarDrawerToggle t;
+    private NavigationView nv;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.friend_option_list);
+        setContentView(R.layout.activity_add_friends);
+
+        dl = (DrawerLayout) findViewById(R.id.addFriends);
+        t = new ActionBarDrawerToggle(this, dl, R.string.Open, R.string.Close);
+        dl.addDrawerListener(t);
+        t.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        nv = (NavigationView) findViewById(R.id.nv);
+        nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                switch (id)
+                {
+                    case R.id.navAddFriends:
+                        Toast.makeText(AddFriends.this, "My Account", Toast.LENGTH_SHORT).show();
+                    case R.id.navCalender:
+                        Toast.makeText(AddFriends.this, "Settings", Toast.LENGTH_SHORT).show();
+                        Intent o = new Intent(AddFriends.this, CalendarActivity.class);
+                        startActivity(o);
+                        finish();
+                    case R.id.navCurrentFriends:
+                        Toast.makeText(AddFriends.this, "Friends", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(AddFriends.this, CurrentUserFriends.class);
+                        startActivity(i);
+                        finish();
+                    default:
+                        return true;
+                }
+            }
+        });
 
         users = new ArrayList<>();
 
@@ -64,7 +103,13 @@ public class AddFriends extends AppCompatActivity{
 //                android.R.color.holo_red_light);
 
         populateTimeline();
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        if (t.onOptionsItemSelected(item))
+            return true;
+        return super.onOptionsItemSelected(item);
     }
 
     public void fetchTimelineAsync(int page) {
@@ -93,13 +138,6 @@ public class AddFriends extends AppCompatActivity{
 
     }
 
-    public void goBack(View view){
-        Intent i = new Intent(AddFriends.this, CurrentUserFriends.class);
-        startActivity(i);
-        finish();
-
-    }
-
     public static class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.ViewHolder> {
 
             private List<User> Users;
@@ -124,11 +162,6 @@ public class AddFriends extends AppCompatActivity{
             public void onBindViewHolder(ViewHolder holder, int position) {
                 // get data
                 ParseUser user = Users.get(position);
-
-                //String myTime = TimeFormat.getTimeDifference(user.getCreatedAt().toString());
-    //            holder.time.setText(myTime);
-                //holder.tvDate.setText(getRelativeTimeAgo(post.getCreatedAt().toString()));
-
                 holder.Friend.setText(user.getUsername());
             }
 
