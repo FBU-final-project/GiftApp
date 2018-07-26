@@ -1,4 +1,4 @@
-package e.rahmanapyrr.gift_app.Friends;
+package e.rahmanapyrr.gift_app;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,53 +11,55 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import e.rahmanapyrr.gift_app.ProfileActivity;
-import e.rahmanapyrr.gift_app.R;
+import e.rahmanapyrr.gift_app.models.Post;
 import e.rahmanapyrr.gift_app.models.User;
+
 
 public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.ViewHolder> {
 
-    private List<User> Users;
+        private List<User> Users;
 
-    Context context;
+        Context context;
 
-    public AddFriendsAdapter(List<User> users) {
-        this.Users = users;
-    }
+        public AddFriendsAdapter(List<User> users) {
+            this.Users = users;
+        }
 
-    @Override
-    public AddFriendsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        context = parent.getContext();
-        LayoutInflater inflater = LayoutInflater.from(context);
+        @Override
+        public AddFriendsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            context = parent.getContext();
+            LayoutInflater inflater = LayoutInflater.from(context);
 
-        View friendView = inflater.inflate(R.layout.item_friend_option, parent, false);
+            View friendView = inflater.inflate(R.layout.item_friend_option, parent, false);
 
-        return new AddFriendsAdapter.ViewHolder(friendView);
-    }
+            return new ViewHolder(friendView);
+        }
 
-    @Override
-    public void onBindViewHolder(AddFriendsAdapter.ViewHolder holder, int position) {
-        // get data
-        ParseUser user = Users.get(position);
+        @Override
+        public void onBindViewHolder(AddFriendsAdapter.ViewHolder holder, int position) {
+            // get data
+            ParseUser user = Users.get(position);
 
-        //String myTime = TimeFormat.getTimeDifference(user.getCreatedAt().toString());
-        //            holder.time.setText(myTime);
-        //holder.tvDate.setText(getRelativeTimeAgo(post.getCreatedAt().toString()));
+            //String myTime = TimeFormat.getTimeDifference(user.getCreatedAt().toString());
+//            holder.time.setText(myTime);
+            //holder.tvDate.setText(getRelativeTimeAgo(post.getCreatedAt().toString()));
 
-        holder.Friend.setText(user.getUsername());
-    }
+            holder.Friend.setText(user.getUsername());
+        }
 
-    @Override
-    public int getItemCount() {
-        return Users.size();
-    }
+        @Override
+        public int getItemCount() {
+            return Users.size();
+        }
 
     public void AddFriendFunc(View view) {
     }
@@ -86,19 +88,19 @@ public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.Vi
                         public void done(ParseException e) {
                             if (e == null) {
                                 Log.d("dept", "saved");
-                                } else {
+                            } else {
                                 Log.d("dept", "Error: " + e.getMessage());
-                                }
+                            }
 
-                                }
-                                });
-                    }
+                        }
+                    });
+                }
 
-                                                ///button to add friends------------------------------------------
+                ///button to add friends------------------------------------------
             });
 
-        //when the user clicks on a row, show MovieDetailsActivity for the selected movie
-                    itemView.setOnClickListener(this);
+            //when the user clicks on a row, show MovieDetailsActivity for the selected movie
+            itemView.setOnClickListener(this);
         }
 
         @Override
@@ -109,28 +111,30 @@ public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.Vi
                 // get the movie at the position, this won't work if the class is static
                 ParseUser user = Users.get(position);
                 // create intent for the new activity
-                Intent intent = new Intent(context, ProfileActivity.class);
-                // serialize the movie using parceler, use its short name as a key
-
-                intent.putExtra("username", user.getUsername());
-                context.startActivity(intent);
+//                Intent intent = new Intent(context, DetailActivity.class);
+//                // serialize the movie using parceler, use its short name as a key
+//
+//                intent.putExtra("username", user.getUsername());
+//                context.startActivity(intent);
+            }
         }
     }
+
+        // Clean all elements of the recycler
+        public void clear() {
+            Users.clear();
+            notifyDataSetChanged();
+        }
+
+        // Add a list of items -- change to type used
+        public void addAll(List<User> list) {
+            Users.addAll(list);
+            notifyDataSetChanged();
+        }
+
     }
 
 
-    // Clean all elements of the recycler
-    public void clear() {
-        Users.clear();
-        notifyDataSetChanged();
-    }
 
-    // Add a list of items -- change to type used
-    public void addAll(List<User> list) {
-        Users.addAll(list);
-        notifyDataSetChanged();
-    }
-
-}
 
 

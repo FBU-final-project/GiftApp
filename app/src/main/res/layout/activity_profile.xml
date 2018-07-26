@@ -10,21 +10,38 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
         <TextView
             android:id="@+id/nameTv"
-            android:layout_width="272dp"
+            android:layout_width="285dp"
             android:layout_height="37dp"
-            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginEnd="22dp"
-            android:layout_marginTop="17dp" />
+            android:layout_marginStart="99dp"
+            android:layout_marginTop="14dp"
+            android:textColor="@android:color/black"
+<<<<<<< HEAD
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/usernameTv"
-            android:layout_width="272dp"
+            android:layout_width="128dp"
             android:layout_height="31dp"
+=======
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/usernameTv"
+            android:layout_width="131dp"
+            android:layout_height="33dp"
+>>>>>>> 05f05729f97979758613495f3298fa799ea00b3b
             android:layout_alignBottom="@+id/iconIv"
-            android:layout_alignStart="@+id/nameTv" />
+            android:layout_alignStart="@+id/nameTv"
+            android:layout_marginBottom="4dp"
+            android:layout_marginStart="2dp"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/iconIv"
@@ -36,6 +53,20 @@
             android:adjustViewBounds="false"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/mark" />
+
+        <TextView
+            android:id="@+id/birthdayTv"
+            android:layout_width="141dp"
+            android:layout_height="35dp"
+<<<<<<< HEAD
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/usernameTv"
+=======
+            android:layout_below="@+id/nameTv"
+            android:layout_toEndOf="@+id/usernameTv"
+>>>>>>> 05f05729f97979758613495f3298fa799ea00b3b
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
 
     </RelativeLayout>
 
