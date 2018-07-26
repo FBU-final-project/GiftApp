@@ -5,22 +5,15 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
-<<<<<<< HEAD
-        @ParseClassName("Favorites")
-public class Favorites extends ParseObject{
-            public static final String KEY_USER = "user";
-=======
 @ParseClassName("Favorites")
 public class Favorites extends ParseObject{
 
     public static final String KEY_USER = "user";
->>>>>>> 05f05729f97979758613495f3298fa799ea00b3b
     public static final String KEY_ITEM = "item";
     public static final String KEY_COUNTER = "counter";
 
     public ParseUser getUser(){
         return getParseUser(KEY_USER);
-<<<<<<< HEAD
         }
 
         public String getItem(){ return getString(KEY_ITEM);}
@@ -43,7 +36,6 @@ public class Favorites extends ParseObject{
                 }
 
             }
-=======
     }
 
     public String getItem(){ return getString(KEY_ITEM);}
@@ -66,5 +58,4 @@ public class Favorites extends ParseObject{
         }
 
     }
->>>>>>> 05f05729f97979758613495f3298fa799ea00b3b
 }

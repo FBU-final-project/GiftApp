@@ -70,21 +70,6 @@ public class CurrentUserFriendsAdapter extends RecyclerView.Adapter<CurrentUserF
                 i.putExtra("firstname", user.getString("firstname"));
                 i.putExtra("lastname", user.getString("lastname"));
                 i.putExtra("birthday", user.getString("birthdayString"));
-                /*
-<<<<<<< HEAD:app/src/main/java/e/rahmanapyrr/gift_app/Friends/CurrentUserFriendsAdapter.java
-+                if(post.getProfilePic() != null) {
-+                    i.putExtra("icon", post.getProfilePic().getUrl());
-+                }
-+                else{
-+                    i.putExtra("icon", "");
-+                }
-//+                */
-//                if(post.getProfilePic() != null) {
-//                    i.putExtra("icon", post.getProfilePic().getUrl());
-//                }
-//                else{
-//                    i.putExtra("icon", "");
-//                }
 
                 context.startActivity(i);
             }
