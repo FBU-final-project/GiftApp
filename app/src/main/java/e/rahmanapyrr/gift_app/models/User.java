@@ -34,9 +34,6 @@ public class User extends ParseUser {
             put(KEY_USER, user);
         }
 
-        public String getFirstname(){ return getString(KEY_FIRST);}
-
-        public String getLastname() { return getString(KEY_LAST); }
 
         public User(){}
 

@@ -15,6 +15,9 @@ import com.parse.ParseUser;
 import java.util.ArrayList;
 import java.util.List;
 
+import e.rahmanapyrr.gift_app.Friends.AddFriends;
+import e.rahmanapyrr.gift_app.Friends.CurrentUserFriendsAdapter;
+
 
 public class CurrentUserFriends extends AppCompatActivity {
     ArrayList<ParseUser> friends;
@@ -23,12 +26,12 @@ public class CurrentUserFriends extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_home);
+        setContentView(R.layout.current_friends);
 
         friends = new ArrayList<>();
 
         adapter = new CurrentUserFriendsAdapter(friends);
-        rvcurrentFriends = findViewById(R.id.rvContent);
+        rvcurrentFriends = findViewById(R.id.rvcurrentFriends);
         rvcurrentFriends.setLayoutManager(new LinearLayoutManager(this));
         rvcurrentFriends.setAdapter(adapter);
 
