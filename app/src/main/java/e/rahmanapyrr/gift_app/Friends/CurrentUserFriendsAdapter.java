@@ -60,12 +60,10 @@ public class CurrentUserFriendsAdapter extends RecyclerView.Adapter<CurrentUserF
         @Override
         public void onClick(View view) {
             int position = getAdapterPosition();
-<<<<<<< HEAD:app/src/main/java/e/rahmanapyrr/gift_app/Friends/CurrentUserFriendsAdapter.java
-            if(position != RecyclerView.NO_POSITION) {
-=======
+
+
             if(position != RecyclerView.NO_POSITION){
->>>>>>> 05f05729f97979758613495f3298fa799ea00b3b:app/src/main/java/e/rahmanapyrr/gift_app/CurrentUserFriendsAdapter.java
-                ParseUser user = CurrFriends.get(position);
+            ParseUser user = CurrFriends.get(position);
                 Intent i = new Intent(context, ProfileActivity.class);
                 i.putExtra("username", user.getUsername());
                 //i.putExtra("photo", user.getImage().getUrl());
@@ -80,16 +78,14 @@ public class CurrentUserFriendsAdapter extends RecyclerView.Adapter<CurrentUserF
 +                else{
 +                    i.putExtra("icon", "");
 +                }
-+                */
-=======
-                if(post.getProfilePic() != null) {
-                    i.putExtra("icon", post.getProfilePic().getUrl());
-                }
-                else{
-                    i.putExtra("icon", "");
-                }
-                */
->>>>>>> 05f05729f97979758613495f3298fa799ea00b3b:app/src/main/java/e/rahmanapyrr/gift_app/CurrentUserFriendsAdapter.java
+//+                */
+//                if(post.getProfilePic() != null) {
+//                    i.putExtra("icon", post.getProfilePic().getUrl());
+//                }
+//                else{
+//                    i.putExtra("icon", "");
+//                }
+
                 context.startActivity(i);
             }
         }

@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.parse.FindCallback;
+import com.parse.ParseException;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
@@ -64,91 +65,60 @@ public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.Vi
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-            public TextView Friend;
-            public Button AddFriendbtn;
+        public TextView Friend;
+        public Button AddFriendbtn;
 
 
-            public ViewHolder(@NonNull View itemView) {
-                super(itemView);
-                Friend = (TextView)itemView.findViewById(R.id.friendNameOption);
-                AddFriendbtn = (Button) itemView.findViewById(R.id.addFriendbtn);
+        public ViewHolder(@NonNull final View itemView) {
+            super(itemView);
+            Friend = (TextView) itemView.findViewById(R.id.friendNameOption);
+            AddFriendbtn = (Button) itemView.findViewById(R.id.addFriendbtn);
 
-///add friends///
-               AddFriendbtn.setOnClickListener(new View.OnClickListener() {
-                   @Override
-                   public void onClick(View view) {
-                       final ParseUser user = Users.get(getAdapterPosition());
+            ///add friends///-----------------------------------
+            AddFriendbtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    final ParseUser user = Users.get(getAdapterPosition());
+                    ParseUser currentUserClass = ParseUser.getCurrentUser();
 
-                       final ArrayList<Post> posts;
-                       posts = new ArrayList<>();
+                    ParseRelation<ParseUser> friends = currentUserClass.getRelation("FriendRelation");
+                    friends.add(user);
+                    currentUserClass.saveInBackground(new SaveCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            if (e == null) {
+                                Log.d("dept", "saved");
+                            } else {
+                                Log.d("dept", "Error: " + e.getMessage());
+                            }
 
-                       final Post.Query postQuery = new Post.Query();
-                       postQuery.whereEqualTo("user", ParseUser.getCurrentUser());
-
-                       postQuery.orderByDescending("createdAt").findInBackground(new FindCallback<Post>() {
-                           @Override
-                           public void done(List<Post> objects, com.parse.ParseException e) {
-                               if (e == null) {
-                                   posts.addAll(objects);
-                                   Post currentUserClass = posts.get(0);
-
-                                   try {
-                                       System.out.println("Hey" + currentUserClass.getUser().fetchIfNeeded().getUsername());
-                                   } catch (com.parse.ParseException e1) {
-                                       e1.printStackTrace();
-                                   }
-                                   System.out.println("hey " + user.getUsername());
-
-                                   currentUserClass.addUnique("friends_array", user);
-                                   currentUserClass.saveEventually();
-
-                                   ParseRelation<ParseUser> friends = currentUserClass.getRelation("FriendRelation");
-                                   friends.add(user);
-                                   currentUserClass.saveInBackground(new SaveCallback() {
-                                       @Override
-                                       public void done(com.parse.ParseException e) {
-                                           if (e == null) {
-                                               Log.d("dept", "saved");
-                                           } else {
-                                               Log.d("dept", "Error: " + e.getMessage());
-                                           }
-
-                                       }
-                                   });
-
-                               } else {
-                                   e.printStackTrace();
-                               }
-                           }
-                       });
-
-                   }
-               });
- ///button to add friends
-
-
-                itemView.setOnClickListener(this);
-            }
-
-            //when the user clicks on a row, show MovieDetailsActivity for the selected movie
-            @Override
-            public void onClick(View v) {
-
-                int position = getAdapterPosition();
-                // make sure the position is valid, i.e. actually exists in the view
-                if (position != RecyclerView.NO_POSITION) {
-                    // get the movie at the position, this won't work if the class is static
-                    ParseUser user = Users.get(position);
-                    // create intent for the new activity
-                    Intent intent = new Intent(context, ProfileActivity.class);
-                    // serialize the movie using parceler, use its short name as a key
-
-                    intent.putExtra("username", user.getUsername());
-                    context.startActivity(intent);
+                        }
+                    });
                 }
 
+                ///button to add friends------------------------------------------
+            });
+
+            //when the user clicks on a row, show MovieDetailsActivity for the selected movie
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            int position = getAdapterPosition();
+            // make sure the position is valid, i.e. actually exists in the view
+            if (position != RecyclerView.NO_POSITION) {
+                // get the movie at the position, this won't work if the class is static
+                ParseUser user = Users.get(position);
+                // create intent for the new activity
+//                Intent intent = new Intent(context, DetailActivity.class);
+//                // serialize the movie using parceler, use its short name as a key
+//
+//                intent.putExtra("username", user.getUsername());
+//                context.startActivity(intent);
             }
         }
+    }
 
         // Clean all elements of the recycler
         public void clear() {
