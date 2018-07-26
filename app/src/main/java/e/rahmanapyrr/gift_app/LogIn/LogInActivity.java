@@ -14,7 +14,6 @@ import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 
-import e.rahmanapyrr.gift_app.Friends.AddFriends;
 import e.rahmanapyrr.gift_app.Friends.CurrentUserFriends;
 import e.rahmanapyrr.gift_app.R;
 
@@ -77,7 +76,7 @@ public class LogInActivity extends AppCompatActivity {
                     System.out.println("Working BISADFJOIAF");
 
                     Toast.makeText(LogInActivity.super.getBaseContext(), "LOGIN SUCCESS!", Toast.LENGTH_LONG).show();
-                    final Intent intent = new Intent(LogInActivity.this, AddFriends.class);
+                    final Intent intent = new Intent(LogInActivity.this, CurrentUserFriends.class);
                     startActivity(intent);
                     finish();
 
