@@ -19,12 +19,10 @@ import com.parse.ParseRelation;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import e.rahmanapyrr.gift_app.Calendar.CalendarActivity;
 import e.rahmanapyrr.gift_app.R;
-import e.rahmanapyrr.gift_app.models.Post;
 
 
 public class CurrentUserFriends extends AppCompatActivity {
@@ -92,18 +90,6 @@ public class CurrentUserFriends extends AppCompatActivity {
 
 
     public void populateTimeline() {
-//        final Post.Query postQuery = new Post.Query();
-//        postQuery.whereEqualTo("user", ParseUser.getCurrentUser());
-////        final ArrayList<Post> posts;
-////        posts = new ArrayList<>();
-//        postQuery.orderByDescending("createdAt").findInBackground(new FindCallback<Post>() {
-//            @Override
-//            public void done(List<Post> objects, com.parse.ParseException e) {
-//                if (e == null) {
-//                    final ArrayList<Post> posts;
-//                    posts = new ArrayList<>();
-//                    posts.addAll(objects);
-//                    Post currentUserClass = posts.get(0);
                     ParseUser currentUserClass = ParseUser.getCurrentUser();
 
                     final ParseRelation<ParseUser> friend_relations = currentUserClass.getRelation("FriendRelation");

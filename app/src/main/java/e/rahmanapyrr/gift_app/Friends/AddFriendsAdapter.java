@@ -11,17 +11,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import e.rahmanapyrr.gift_app.ProfileActivity;
 import e.rahmanapyrr.gift_app.R;
-import e.rahmanapyrr.gift_app.models.Post;
 import e.rahmanapyrr.gift_app.models.User;
 
 public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.ViewHolder> {
@@ -111,7 +109,7 @@ public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.Vi
                 // get the movie at the position, this won't work if the class is static
                 ParseUser user = Users.get(position);
                 // create intent for the new activity
-                Intent intent = new Intent(context, DetailActivity.class);
+                Intent intent = new Intent(context, ProfileActivity.class);
                 // serialize the movie using parceler, use its short name as a key
 
                 intent.putExtra("username", user.getUsername());

@@ -7,17 +7,25 @@ import com.parse.ParseUser;
 
 @ParseClassName("_User")
 public class User extends ParseUser {
-        public static final String KEY_NAME = "username";
-        public static final String KEY_USER = "user";
+
+    public static final String KEY_USERNAME = "username";
+    public static final String KEY_USER = "user";
+    public static final String KEY_FIRST = "firstname";
+    public static final String KEY_LAST = "lastname";
 
 
         public String getUsername(){
-            return getString(KEY_NAME);
+            return getString(KEY_USERNAME);
         }
 
         public void setUsername(ParseFile username){
-            put(KEY_NAME, username);
+            put(KEY_USERNAME, username);
         }
+
+        public String getFirstname(){ return getString(KEY_FIRST);}
+
+        public String getLastname() { return getString(KEY_LAST); }
+
 
         public ParseUser getUser(){
             return getParseUser(KEY_USER);
