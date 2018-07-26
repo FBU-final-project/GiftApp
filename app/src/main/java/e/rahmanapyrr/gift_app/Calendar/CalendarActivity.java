@@ -164,6 +164,10 @@ public class CalendarActivity extends AppCompatActivity {
         return newMonth +" " + dayz;
     }
 
+
+
+
+
     public void getParseEvents() {
         final User.Query userQuery = new User.Query();
         userQuery.findInBackground(new FindCallback<User>() {

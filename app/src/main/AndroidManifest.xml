@@ -19,17 +19,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".LogIn.RegisterBirthdayActivity" />
-        <activity android:name=".LogIn.RegisterActivity"/>
-        <activity android:name=".LogIn.RegisterNameActivity"/>
-        <activity android:name=".Friends.AddFriends"></activity>
         <activity android:name=".Calendar.CalendarActivity" />
+        <activity android:name=".LogIn.RegisterNameActivity" />
+        <activity android:name=".ProductActivity.LinkActivity"></activity>
+        <activity android:name=".LogIn.RegisterActivity"/>
+        <activity android:name=".Friends.AddFriends"></activity>
         <activity android:name=".ProfileActivity"></activity>
-<<<<<<< HEAD
         <activity android:name=".Friends.CurrentUserFriends" />
-        <activity android:name=".Friends.DetailActivity">
-        </activity>
-=======
         <activity android:name=".CurrentUserFriends" />
->>>>>>> 05f05729f97979758613495f3298fa799ea00b3b
     </application>
 </manifest>
