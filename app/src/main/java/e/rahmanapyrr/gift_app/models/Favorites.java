@@ -12,13 +12,18 @@ public class Favorites extends ParseObject{
     public static final String KEY_ITEM = "item";
     public static final String KEY_COUNTER = "counter";
 
+
+
+    public String getItem(){ return getString(KEY_ITEM);}
+
+    public int getCounter(){ return getInt(KEY_COUNTER);}
+
+
     public ParseUser getUser(){
         return getParseUser(KEY_USER);
         }
 
-        public String getItem(){ return getString(KEY_ITEM);}
 
-        public int getCounter(){ return getInt(KEY_COUNTER);}
 
         public static class Query extends ParseQuery<Favorites> {
         public Query(){
@@ -37,25 +42,3 @@ public class Favorites extends ParseObject{
 
             }
     }
-
-    public String getItem(){ return getString(KEY_ITEM);}
-
-    public int getCounter(){ return getInt(KEY_COUNTER);}
-
-    public static class Query extends ParseQuery<Favorites> {
-        public Query(){
-            super(Favorites.class);
-        }
-
-        public Favorites.Query getTop(){
-            setLimit(20);
-            return this;
-        }
-
-        public Favorites.Query withUser(){
-            include("user");
-            return this;
-        }
-
-    }
-}
