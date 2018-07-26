@@ -1,4 +1,4 @@
-package e.rahmanapyrr.gift_app;
+package e.rahmanapyrr.gift_app.Calendar;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +14,9 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+
+import e.rahmanapyrr.gift_app.R;
+import e.rahmanapyrr.gift_app.User;
 
 public class CalendarActivity extends AppCompatActivity {
 

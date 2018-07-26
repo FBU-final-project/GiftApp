@@ -11,17 +11,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".LogIn.LogInActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LogIn.RegisterActivity" />
         <activity android:name=".LogIn.RegisterBirthdayActivity" />
-        <activity android:name=".CalendarActivity" />
+        <activity android:name=".Calendar.CalendarActivity" />
         <activity android:name=".LogIn.RegisterNameActivity" />
         <activity android:name=".ProductActivity.LinkActivity"></activity>
+        <activity android:name=".LogIn.RegisterActivity"/>
+        <activity android:name=".Friends.AddFriends"></activity>
+        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".Friends.CurrentUserFriends" />
+        <activity android:name=".Friends.DetailActivity">
+        </activity>
     </application>
-
 </manifest>
