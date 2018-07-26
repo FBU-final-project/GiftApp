@@ -1,7 +1,10 @@
 package e.rahmanapyrr.gift_app;
 
 import android.os.Bundle;
+<<<<<<< HEAD
 import android.support.v7.app.AppCompatActivity;
+=======
+>>>>>>> 05f05729f97979758613495f3298fa799ea00b3b
 import android.widget.TextView;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -29,5 +32,9 @@ public class ProfileActivity extends AppCompatActivity {
 
         String birthday = getIntent().getStringExtra("birthday");
         myBirthday.setText(birthday);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 05f05729f97979758613495f3298fa799ea00b3b
     }
 }
