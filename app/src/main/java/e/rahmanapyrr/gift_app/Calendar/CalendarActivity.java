@@ -1,7 +1,13 @@
 package e.rahmanapyrr.gift_app.Calendar;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
@@ -15,10 +21,13 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+import e.rahmanapyrr.gift_app.AppBaseActivity;
+import e.rahmanapyrr.gift_app.Friends.AddFriends;
+import e.rahmanapyrr.gift_app.Friends.CurrentUserFriends;
 import e.rahmanapyrr.gift_app.R;
 import e.rahmanapyrr.gift_app.User;
 
-public class CalendarActivity extends AppCompatActivity {
+public class CalendarActivity extends AppBaseActivity {
 
     private static final String AUTHORITY = "e.rahmanapyrr.gift_app";
 
@@ -27,6 +36,7 @@ public class CalendarActivity extends AppCompatActivity {
     ArrayList<User> allUsers;
     Date today;
     CalendarPickerView datePicker;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +58,6 @@ public class CalendarActivity extends AppCompatActivity {
                 .withSelectedDate(today);
 
         getParseEvents();
-
 
         datePicker.setOnDateSelectedListener(new CalendarPickerView.OnDateSelectedListener() {
             @Override
