@@ -22,32 +22,22 @@ public class RegisterNameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_name);
-
         etFirstName = findViewById(R.id.etFirstName);
         etLastName = findViewById(R.id.etLastName);
-
         username = getIntent().getStringExtra("username");
         password = getIntent().getStringExtra("password");
         System.out.println("Username: " + username);
         System.out.println("Password: " + password);
-
-
         continueNameButton = findViewById(R.id.bRegisterName);
-
-
         continueNameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 checkValidCredentials();
             }
         });
-
-
     }
 
-
     private boolean checkValidCredentials() {
-
         if (etFirstName.getText().toString().matches("") || etLastName.getText().toString().matches("")) {
             Toast.makeText(RegisterNameActivity.super.getBaseContext(), "Enter valid names", Toast.LENGTH_SHORT).show();
             return false;
@@ -63,9 +53,5 @@ public class RegisterNameActivity extends AppCompatActivity {
             finish();
             return true;
         }
-
-
     }
-
-
 }
