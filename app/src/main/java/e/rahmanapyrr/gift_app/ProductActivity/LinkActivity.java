@@ -26,7 +26,6 @@ public class LinkActivity extends AppCompatActivity {
 
 
 
-
         buyButton = findViewById(R.id.buyNowButton);
         giftIdea = findViewById(R.id.linkSearch);
         linkBase = "https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Daps&field-keywords=";
@@ -36,7 +35,10 @@ public class LinkActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                String searchID = makeSearchUrl();
+
                 takeToBuy(view);
+                makeSearchUrl();
 
             }
         });
@@ -44,9 +46,7 @@ public class LinkActivity extends AppCompatActivity {
 
 
 
-
     }
-
 
 
 
@@ -58,10 +58,20 @@ public class LinkActivity extends AppCompatActivity {
         String[] recommendationList = recommendation.split(" ");
         String result = "";
 
+        int size = recommendationList.length;
 
-        for(String i: recommendationList){
-            result += i;
-            result += " ";
+
+        if(size>1){
+
+            for(int i=0; i<size-1; i++){
+                result += recommendationList[i];
+                result += "+";
+            }
+            result += recommendationList[size-1];
+
+        } else {
+            result += recommendationList[0];
+            System.out.println(result);
         }
 
         return result;
@@ -72,17 +82,18 @@ public class LinkActivity extends AppCompatActivity {
 
 
 
-
     public void takeToBuy(View view){
 
+        String searchId = makeSearchUrl();
+        linkBase = linkBase+searchId;
 
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Daps&field-keywords=war+craft"));
+
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(linkBase));
+        // Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Daps&field-keywords=war+craft"));
         startActivity(browserIntent);
 
 
     }
-
-
 
 
 
