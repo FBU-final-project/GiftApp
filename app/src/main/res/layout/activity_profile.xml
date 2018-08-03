@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileActivity">
+    tools:context=".Profile.ProfileActivity">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -58,8 +58,30 @@
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/profileRv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="89dp">
+
+        <EditText
+            android:id="@+id/addItemEt"
+            android:layout_width="325dp"
+            android:layout_height="82dp"
+            android:hint="Enter a goodie to put in their bag!"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/addBtn"
+            android:layout_width="56dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="12dp"
+            android:text="Add" />
+    </RelativeLayout>
 
 
 </LinearLayout>

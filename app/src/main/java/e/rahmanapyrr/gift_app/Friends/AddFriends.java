@@ -1,18 +1,11 @@
 package e.rahmanapyrr.gift_app.Friends;
 
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -20,12 +13,10 @@ import com.parse.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-import e.rahmanapyrr.gift_app.AppBaseActivity;
-import e.rahmanapyrr.gift_app.Calendar.CalendarActivity;
 import e.rahmanapyrr.gift_app.R;
 import e.rahmanapyrr.gift_app.models.User;
 
-public class AddFriends extends AppBaseActivity {
+public class AddFriends extends AppCompatActivity {
     ArrayList<User> users;
     AddFriendsAdapter adapter;
     RecyclerView rvfriendNameOption;
