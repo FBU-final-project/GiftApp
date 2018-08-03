@@ -23,7 +23,8 @@
         <activity android:name=".LogIn.RegisterActivity" />
         <activity android:name=".Calendar.CalendarActivity"/>
         <activity android:name=".Profile.ProfileActivity" />
-        <activity android:name=".CurrentUserFriends" />
+        <activity android:name=".Friends.AddFriends"/>
+        <activity android:name=".Friends.CurrentUserFriends"/>
         <activity android:name=".Config.PaymentDetails" />
         <activity android:name=".Paypal.BuyingActivity"></activity>
     </application>

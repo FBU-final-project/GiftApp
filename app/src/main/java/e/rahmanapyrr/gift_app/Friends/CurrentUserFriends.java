@@ -1,7 +1,6 @@
 package e.rahmanapyrr.gift_app.Friends;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -13,10 +12,11 @@ import com.parse.ParseUser;
 import java.util.ArrayList;
 import java.util.List;
 
+import e.rahmanapyrr.gift_app.AppBaseActivity;
 import e.rahmanapyrr.gift_app.R;
 
 
-public class CurrentUserFriends extends AppCompatActivity {
+public class CurrentUserFriends extends AppBaseActivity {
     ArrayList<ParseUser> friends;
     CurrentUserFriendsAdapter adapter;
     RecyclerView rvcurrentFriends;
