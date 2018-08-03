@@ -11,7 +11,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".LogIn.LogInActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,13 +18,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".LogIn.RegisterBirthdayActivity" />
-        <activity android:name=".Calendar.CalendarActivity" />
         <activity android:name=".LogIn.RegisterNameActivity" />
-        <activity android:name=".ProductActivity.LinkActivity"></activity>
-        <activity android:name=".LogIn.RegisterActivity"/>
-        <activity android:name=".Friends.AddFriends"></activity>
-        <activity android:name=".ProfileActivity"></activity>
-        <activity android:name=".Friends.CurrentUserFriends" />
+        <activity android:name=".ProductActivity.LinkActivity" />
+        <activity android:name=".LogIn.RegisterActivity" />
+        <activity android:name=".Calendar.CalendarActivity"/>
+        <activity android:name=".Profile.ProfileActivity" />
         <activity android:name=".CurrentUserFriends" />
+        <activity android:name=".Config.PaymentDetails" />
+        <activity android:name=".Paypal.BuyingActivity"></activity>
     </application>
+
 </manifest>
