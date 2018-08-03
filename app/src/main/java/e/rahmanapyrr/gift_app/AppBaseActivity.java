@@ -1,5 +1,8 @@
 package e.rahmanapyrr.gift_app;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -106,10 +109,8 @@ public abstract class AppBaseActivity extends AppCompatActivity implements MenuI
                 Intent i = new Intent(this, AddFriends.class);
                 startActivity(i);
                 finish();
-                // handle it
                 break;
             case R.id.navCalender:
-                // do whatever
                 Intent o = new Intent(this, CalendarActivity.class);
                 startActivity(o);
                 finish();
@@ -122,4 +123,5 @@ public abstract class AppBaseActivity extends AppCompatActivity implements MenuI
         }
         return false;
     }
+
 }
