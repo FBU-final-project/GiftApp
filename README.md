@@ -19,6 +19,10 @@ Login → click payment → click add payment method → enter card/billing info
 Login → click Holiday calendar (Christmas and wherever else you give gifts)
 Login → Click notifications → select which dates you want to be notified 3 weeks before (birthdays, anniversaries, christmas, etc). → 3 weeks before event receive push notification reminder
 
+CURRENT WALKTHROUGH AFTER WEEK 6 ARI (TWO GIFS):
+
+<img src='https://i.imgur.com/suXu3Sp.gif' title='Video walkthrough' width='' alt='Video walkthrough'/>
+<img src='https://i.imgur.com/FmZojkh.gif' title='Video walkthrough' width='' alt='Video walkthrough'/>
 
 CURRENT WALKTHROUGH AFTER WEEK 6:
 <img src='https://github.com/FBU-final-project/GiftApp/blob/master/week6Walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
