@@ -25,8 +25,6 @@ import java.util.Calendar;
 import e.rahmanapyrr.gift_app.R;
 
 public class RegisterBirthdayActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
-
-
     private Spinner dateSpinner;
     private Button finishButton;
     private Button dateSelectorButton;
@@ -40,39 +38,26 @@ public class RegisterBirthdayActivity extends AppCompatActivity implements DateP
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_birthday);
-
-
         username = getIntent().getStringExtra("username");
         password = getIntent().getStringExtra("password");
         firstname = getIntent().getStringExtra("firstname");
         lastname = getIntent().getStringExtra("lastname");
-
-
+        // Test statements to see if everything transferred intents correctly
         System.out.println("USERNAME: " + username);
         System.out.println("PASSWORD: " + password);
         System.out.println("FIRST NAME: " + firstname);
         System.out.println("LAST NAME: " + lastname);
-
-
         dateSpinner = (Spinner) findViewById(R.id.sBirthdate);
         finishButton = findViewById(R.id.registerFinish);
         dateSelectorButton = findViewById(R.id.bDateSelector);
         selectedDate = findViewById(R.id.tvCurrentDate);
 
-
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*final Intent intent = new Intent(RegisterBirthdayActivity.this, LogInActivity.class);
-                startActivity(intent);
-                finish();
-                */
-
                 SignUp(username, password, firstname, lastname, selectedDate.getText().toString());
-
             }
         });
-
 
         View.OnTouchListener Button_OnTouch = new View.OnTouchListener() {
             @Override
@@ -99,10 +84,6 @@ public class RegisterBirthdayActivity extends AppCompatActivity implements DateP
         dateSelectorButton.setOnTouchListener(Button_OnTouch);
         dateSelectorButton.setOnKeyListener(Button_OnKey);
 
-
-        // FOR THE SPINNER
-
-
         View.OnTouchListener Spinner_OnTouch = new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_UP) {
@@ -125,17 +106,15 @@ public class RegisterBirthdayActivity extends AppCompatActivity implements DateP
 
         dateSpinner.setOnTouchListener(Spinner_OnTouch);
         dateSpinner.setOnKeyListener(Spinner_OnKey);
-
-
     }
 
-
+    // Open the actual calendar date selector
     public void showDatePickerDialog(View v) {
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getSupportFragmentManager(), "Date");
     }
 
-
+    // Gets date selected and displays it
     @Override
     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
         Calendar c = Calendar.getInstance();
@@ -147,18 +126,16 @@ public class RegisterBirthdayActivity extends AppCompatActivity implements DateP
         selectedDate.setText(currentDateString);
     }
 
-
+    // Create new ParseUser and register them with our database
     private void SignUp(String username, String password, String firstname, String lastname, String birthday) {
         // Create a Parse User
         ParseUser user = new ParseUser();
-
         // Set the core properties
         user.setUsername(username);
         user.setPassword(password);
         user.put("firstname", firstname);
         user.put("lastname", lastname);
         user.put("birthdayString", selectedDate.getText().toString());
-
         // Invoke signUpInBackground
         user.signUpInBackground(new SignUpCallback() {
             @Override
@@ -166,13 +143,10 @@ public class RegisterBirthdayActivity extends AppCompatActivity implements DateP
                 if (e == null) {
                     // Hooray! User registered
                     Log.d("RegisterActivity", "Congrats you're Registered!");
-
                     final Intent intent = new Intent(RegisterBirthdayActivity.this, LogInActivity.class);
                     Toast.makeText(RegisterBirthdayActivity.super.getBaseContext(), "REGISTERED!", Toast.LENGTH_SHORT);
                     startActivity(intent);
                     finish();
-
-
                 } else {
                     // Signup didn't succeed
                     Log.e("RegisterActivity", "Registration FAILED!");
@@ -181,8 +155,5 @@ public class RegisterBirthdayActivity extends AppCompatActivity implements DateP
                 }
             }
         });
-
     }
-
-
 }
