@@ -36,7 +36,9 @@ public class LinkActivity extends AppCompatActivity {
         buyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String searchID = makeSearchUrl();
+
                 takeToBuy(view);
                 makeSearchUrl();
             }
@@ -53,7 +55,7 @@ public class LinkActivity extends AppCompatActivity {
             for(int i=0; i<size-1; i++){
                 result += recommendationList[i];
                 result += "+";
-            }
+                }
             result += recommendationList[size-1];
         } else {
             result += recommendationList[0];

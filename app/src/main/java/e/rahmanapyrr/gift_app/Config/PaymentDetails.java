@@ -18,18 +18,24 @@ public class PaymentDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_details);
+
+
         txtId = (TextView) findViewById(R.id.txtId);
         txtAmount = (TextView) findViewById(R.id.txtAmount);
         txtStatus = (TextView) findViewById(R.id.txtStatus);
+
         // Get intent
         Intent intent = getIntent();
+
         try{
             JSONObject jsonObject = new JSONObject(intent.getStringExtra("PaymentDetails"));
             showDetails(jsonObject.getJSONObject("response"), intent.getStringExtra("PaymentAmount"));
         } catch (JSONException e){
             e.printStackTrace();
         }
+
     }
+
 
     // Populate the screen with the payment ID, the amount of the transaction and if it was approved
     private void showDetails(JSONObject response, String paymentAmount) {
