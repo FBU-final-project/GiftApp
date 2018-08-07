@@ -18,19 +18,6 @@ public class Favorites extends ParseObject{
 
     public int getCounter(){ return getInt(KEY_COUNTER);}
 
-    public void upVote(){
-        int temp = getCounter();
-        temp++;
-        System.out.println(temp);
-        put(KEY_COUNTER, temp);
-    }
-
-    public void downVote(){
-        int temp = getCounter();
-        temp--;
-        put(KEY_COUNTER, temp);
-    }
-
 
     public ParseUser getUser(){
         return getParseUser(KEY_USER);

@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="e.rahmanapyrr.gift_app">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <permission android:name="e.rahmanapyrr.gift_app.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="com.example.gcm.permission.C2D_MESSAGE" />
 
     <application
         android:name=".ParseApp"
@@ -10,6 +18,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <!-- tools:node="replace" -->
         <activity android:name=".LogIn.LogInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,14 +28,26 @@
             </intent-filter>
         </activity>
         <activity android:name=".LogIn.RegisterBirthdayActivity" />
+        <activity android:name=".Calendar.CalendarActivity" />
         <activity android:name=".LogIn.RegisterNameActivity" />
         <activity android:name=".ProductActivity.LinkActivity" />
         <activity android:name=".LogIn.RegisterActivity" />
-        <activity android:name=".Calendar.CalendarActivity"/>
-        <activity android:name=".Profile.ProfileActivity" />
+        <activity android:name=".Friends.AddFriends" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".Friends.CurrentUserFriends" />
         <activity android:name=".CurrentUserFriends" />
-        <activity android:name=".Config.PaymentDetails" />
-        <activity android:name=".Paypal.BuyingActivity"></activity>
+
+        <service android:name=".FCMMessageHandler">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".MyInstanceIDListenerService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".RegistrationIntentService" android:exported="false"/>
     </application>
 
 </manifest>

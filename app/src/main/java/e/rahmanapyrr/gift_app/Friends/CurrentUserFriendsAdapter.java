@@ -13,7 +13,7 @@ import com.parse.ParseUser;
 
 import java.util.List;
 
-import e.rahmanapyrr.gift_app.Profile.ProfileActivity;
+import e.rahmanapyrr.gift_app.ProfileActivity;
 import e.rahmanapyrr.gift_app.R;
 
 public class CurrentUserFriendsAdapter extends RecyclerView.Adapter<CurrentUserFriendsAdapter.ViewHolder> {
@@ -51,9 +51,7 @@ public class CurrentUserFriendsAdapter extends RecyclerView.Adapter<CurrentUserF
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             Username = (TextView)itemView.findViewById(R.id.currentFriendName);
-
             itemView.setOnClickListener(this);
         }
 
@@ -61,13 +59,11 @@ public class CurrentUserFriendsAdapter extends RecyclerView.Adapter<CurrentUserF
         public void onClick(View view) {
             int position = getAdapterPosition();
 
-
             if(position != RecyclerView.NO_POSITION){
             ParseUser user = CurrFriends.get(position);
                 Intent i = new Intent(context, ProfileActivity.class);
                 i.putExtra("username", user.getUsername());
                 //i.putExtra("photo", user.getImage().getUrl());
-                i.putExtra("parseuser", user);
                 i.putExtra("firstname", user.getString("firstname"));
                 i.putExtra("lastname", user.getString("lastname"));
                 i.putExtra("birthday", user.getString("birthdayString"));

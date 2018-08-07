@@ -1,8 +1,19 @@
 package e.rahmanapyrr.gift_app.Friends;
 
+import android.app.Notification;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.FirebaseInstanceIdService;
+import com.google.firebase.internal.FirebaseAppHelper;
+import com.google.firebase.messaging.FirebaseMessaging;
+
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,20 +22,29 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseQuery;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
+import org.joda.time.DateTime;
+import org.joda.time.Days;
+
+import java.util.ArrayList;
 import java.util.List;
 
-import e.rahmanapyrr.gift_app.Profile.ProfileActivity;
+import e.rahmanapyrr.gift_app.CurrentUserFriends;
+import e.rahmanapyrr.gift_app.ProfileActivity;
 import e.rahmanapyrr.gift_app.R;
 import e.rahmanapyrr.gift_app.models.User;
 
 public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.ViewHolder> {
 
     private List<User> Users;
+    ArrayList<ParseUser> friends;
+    DateTime today = new DateTime();
 
     Context context;
 
@@ -46,11 +66,6 @@ public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.Vi
     public void onBindViewHolder(AddFriendsAdapter.ViewHolder holder, int position) {
         // get data
         ParseUser user = Users.get(position);
-
-        //String myTime = TimeFormat.getTimeDifference(user.getCreatedAt().toString());
-        //            holder.time.setText(myTime);
-        //holder.tvDate.setText(getRelativeTimeAgo(post.getCreatedAt().toString()));
-
         holder.Friend.setText(user.getUsername());
     }
 
@@ -59,9 +74,7 @@ public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.Vi
         return Users.size();
     }
 
-    public void AddFriendFunc(View view) {
-    }
-
+    public void AddFriendFunc(View view) {}
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView Friend;
         public Button AddFriendbtn;
@@ -91,15 +104,14 @@ public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.Vi
 
                                 }
                                 });
-                    }
 
-                                                ///button to add friends------------------------------------------
+                    }
+                    ///button to add friends------------------------------------------
             });
 
         //when the user clicks on a row, show MovieDetailsActivity for the selected movie
                     itemView.setOnClickListener(this);
         }
-
         @Override
         public void onClick(View view) {
             int position = getAdapterPosition();
@@ -114,9 +126,8 @@ public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.Vi
                 intent.putExtra("username", user.getUsername());
                 context.startActivity(intent);
         }
+     }
     }
-    }
-
 
     // Clean all elements of the recycler
     public void clear() {

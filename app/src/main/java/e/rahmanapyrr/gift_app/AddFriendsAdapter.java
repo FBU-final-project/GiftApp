@@ -1,7 +1,6 @@
 package e.rahmanapyrr.gift_app;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -11,55 +10,52 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import e.rahmanapyrr.gift_app.models.Post;
 import e.rahmanapyrr.gift_app.models.User;
 
 
 public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.ViewHolder> {
 
-        private List<User> Users;
+    private List<User> Users;
 
-        Context context;
+    Context context;
 
-        public AddFriendsAdapter(List<User> users) {
-            this.Users = users;
-        }
+    public AddFriendsAdapter(List<User> users) {
+        this.Users = users;
+    }
 
-        @Override
-        public AddFriendsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            context = parent.getContext();
-            LayoutInflater inflater = LayoutInflater.from(context);
+    @Override
+    public AddFriendsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        context = parent.getContext();
+        LayoutInflater inflater = LayoutInflater.from(context);
 
-            View friendView = inflater.inflate(R.layout.item_friend_option, parent, false);
+        View friendView = inflater.inflate(R.layout.item_friend_option, parent, false);
 
-            return new ViewHolder(friendView);
-        }
+        return new ViewHolder(friendView);
+    }
 
-        @Override
-        public void onBindViewHolder(AddFriendsAdapter.ViewHolder holder, int position) {
-            // get data
-            ParseUser user = Users.get(position);
+    @Override
+    public void onBindViewHolder(AddFriendsAdapter.ViewHolder holder, int position) {
+        // get data
+        ParseUser user = Users.get(position);
 
-            //String myTime = TimeFormat.getTimeDifference(user.getCreatedAt().toString());
+        //String myTime = TimeFormat.getTimeDifference(user.getCreatedAt().toString());
 //            holder.time.setText(myTime);
-            //holder.tvDate.setText(getRelativeTimeAgo(post.getCreatedAt().toString()));
+        //holder.tvDate.setText(getRelativeTimeAgo(post.getCreatedAt().toString()));
 
-            holder.Friend.setText(user.getUsername());
-        }
+        holder.Friend.setText(user.getUsername());
+    }
 
-        @Override
-        public int getItemCount() {
-            return Users.size();
-        }
+    @Override
+    public int getItemCount() {
+        return Users.size();
+    }
 
     public void AddFriendFunc(View view) {
     }
@@ -68,12 +64,10 @@ public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.Vi
         public TextView Friend;
         public Button AddFriendbtn;
 
-
         public ViewHolder(@NonNull final View itemView) {
             super(itemView);
             Friend = (TextView) itemView.findViewById(R.id.friendNameOption);
             AddFriendbtn = (Button) itemView.findViewById(R.id.addFriendbtn);
-
             ///add friends///-----------------------------------
             AddFriendbtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -91,7 +85,6 @@ public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.Vi
                             } else {
                                 Log.d("dept", "Error: " + e.getMessage());
                             }
-
                         }
                     });
                 }
@@ -120,19 +113,19 @@ public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.Vi
         }
     }
 
-        // Clean all elements of the recycler
-        public void clear() {
-            Users.clear();
-            notifyDataSetChanged();
-        }
-
-        // Add a list of items -- change to type used
-        public void addAll(List<User> list) {
-            Users.addAll(list);
-            notifyDataSetChanged();
-        }
-
+    // Clean all elements of the recycler
+    public void clear() {
+        Users.clear();
+        notifyDataSetChanged();
     }
+
+    // Add a list of items -- change to type used
+    public void addAll(List<User> list) {
+        Users.addAll(list);
+        notifyDataSetChanged();
+    }
+
+}
 
 
 

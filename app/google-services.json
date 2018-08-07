@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "185747060507",
+    "firebase_url": "https://giftapp-8c862.firebaseio.com",
+    "project_id": "giftapp-8c862",
+    "storage_bucket": "giftapp-8c862.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:185747060507:android:551a5c01f4008e7b",
+        "android_client_info": {
+          "package_name": "e.rahmanapyrr.gift_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "185747060507-6k1m4137oejiqp05vnjlcqpnntb5ili2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDetK3Ax5dgdzKRKLTARSYZ174FBSOB8mc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
