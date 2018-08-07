@@ -19,16 +19,17 @@
             </intent-filter>
         </activity>
         <activity android:name=".LogIn.RegisterBirthdayActivity" />
-        <activity android:name=".Calendar.CalendarActivity" />
         <activity android:name=".LogIn.RegisterNameActivity" />
         <activity android:name=".ProductActivity.LinkActivity" />
         <activity android:name=".LogIn.RegisterActivity" />
         <activity android:name=".Friends.AddFriends" />
-        <activity android:name=".ProfileActivity" />
         <activity android:name=".Friends.CurrentUserFriends" />
         <activity android:name=".CurrentUserFriends" />
         <activity android:name=".BuyingActivity" />
         <activity android:name=".Config.PaymentDetails"></activity>
+        <activity android:name=".Calendar.CalendarActivity"/>
+        <activity android:name=".Profile.ProfileActivity" />
+        <activity android:name=".Paypal.BuyingActivity"></activity>
     </application>
 
 </manifest>

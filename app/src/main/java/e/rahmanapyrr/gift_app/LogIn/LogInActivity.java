@@ -32,7 +32,6 @@ public class LogInActivity extends AppCompatActivity {
         passwordLogin = findViewById(R.id.etLoginPassword);
         registerText = findViewById(R.id.tvRegisterButton);
         loginButton = findViewById(R.id.bLogin);
-
         registerText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,7 +40,6 @@ public class LogInActivity extends AppCompatActivity {
                 // finish();
             }
         });
-
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,9 +61,6 @@ public class LogInActivity extends AppCompatActivity {
                     final Intent intent = new Intent(LogInActivity.this, AddFriends.class);
                     startActivity(intent);
                     finish();
-//                    final Intent intent = new Intent(LogInActivity.this, AddFriends.class);
-//                    startActivity(intent);
-//                    finish();
                 } else {
                     Log.e("LoginActivity", "Login Failure");
                     Toast.makeText(LogInActivity.super.getBaseContext(), "Login Failure", Toast.LENGTH_SHORT).show();

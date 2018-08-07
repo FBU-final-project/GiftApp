@@ -18,7 +18,7 @@ import com.parse.SaveCallback;
 
 import java.util.List;
 
-import e.rahmanapyrr.gift_app.ProfileActivity;
+import e.rahmanapyrr.gift_app.Profile.ProfileActivity;
 import e.rahmanapyrr.gift_app.R;
 import e.rahmanapyrr.gift_app.models.User;
 
@@ -66,7 +66,6 @@ public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.Vi
         public TextView Friend;
         public Button AddFriendbtn;
 
-
         public ViewHolder(@NonNull final View itemView) {
             super(itemView);
             Friend = (TextView) itemView.findViewById(R.id.friendNameOption);
@@ -85,9 +84,9 @@ public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.Vi
                         @Override
                         public void done(ParseException e) {
                             if (e == null) {
-                                Log.d("dept", "saved");
+                                Log.d("Friend", "New friend added: " + user.getUsername());
                                 } else {
-                                Log.d("dept", "Error: " + e.getMessage());
+                                Log.d("Friend", "Error: " + e.getMessage());
                                 }
 
                                 }

@@ -7,17 +7,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Friends.AddFriends">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvfriendNameOption"
+    <FrameLayout
+        android:id="@+id/content_frame"
         android:layout_width="match_parent"
-        android:layout_height="528dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="39dp">
+        android:layout_height="match_parent">
 
-    </android.support.v7.widget.RecyclerView>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvfriendNameOption"
+            android:layout_width="match_parent"
+            android:layout_height="528dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="39dp">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </FrameLayout>
 
     <android.support.design.widget.NavigationView
         android:layout_width="wrap_content"

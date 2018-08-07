@@ -11,7 +11,6 @@ import android.widget.Toast;
 import e.rahmanapyrr.gift_app.R;
 
 public class RegisterNameActivity extends AppCompatActivity {
-
     private Button continueNameButton;
     private String username;
     private String password;
@@ -37,6 +36,7 @@ public class RegisterNameActivity extends AppCompatActivity {
         });
     }
 
+    // Checks if fields are empty, if not sends info to following page through intent transfer
     private boolean checkValidCredentials() {
         if (etFirstName.getText().toString().matches("") || etLastName.getText().toString().matches("")) {
             Toast.makeText(RegisterNameActivity.super.getBaseContext(), "Enter valid names", Toast.LENGTH_SHORT).show();

@@ -36,6 +36,8 @@ public class PaymentDetails extends AppCompatActivity {
 
     }
 
+
+    // Populate the screen with the payment ID, the amount of the transaction and if it was approved
     private void showDetails(JSONObject response, String paymentAmount) {
         try {
             txtId.setText(response.getString("id"));
