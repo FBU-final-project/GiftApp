@@ -30,6 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+
     // Checks if fields are empty, if not sends info to following page through intent transfer
     private boolean checkValidCredentials() {
         if (createUsername.getText().toString().matches("") || createPassword.getText().toString().matches("")) {
@@ -46,7 +47,6 @@ public class RegisterActivity extends AppCompatActivity {
             return true;
         }
     }
-
     // Closes the activity and returns to login screen
     public void goBack() {
         this.finish();
