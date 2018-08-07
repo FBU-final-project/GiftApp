@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="e.rahmanapyrr.gift_app">
 
+
     <application
         android:name=".ParseApp"
         android:allowBackup="true"

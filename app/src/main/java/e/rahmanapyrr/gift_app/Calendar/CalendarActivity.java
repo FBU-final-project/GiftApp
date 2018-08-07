@@ -16,7 +16,7 @@ import java.util.Date;
 import java.util.List;
 
 import e.rahmanapyrr.gift_app.R;
-import e.rahmanapyrr.gift_app.User;
+import e.rahmanapyrr.gift_app.models.User;
 
 public class CalendarActivity extends AppCompatActivity {
 

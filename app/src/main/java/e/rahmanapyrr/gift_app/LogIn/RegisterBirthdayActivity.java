@@ -11,10 +11,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.ParseACL;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
@@ -27,7 +27,6 @@ import e.rahmanapyrr.gift_app.R;
 public class RegisterBirthdayActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
 
-    private Spinner dateSpinner;
     private Button finishButton;
     private Button dateSelectorButton;
     private TextView selectedDate;
@@ -55,8 +54,8 @@ public class RegisterBirthdayActivity extends AppCompatActivity implements DateP
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                System.out.println(selectedDate.getText().toString());
                 SignUp(username, password, firstname, lastname, selectedDate.getText().toString());
-
             }
         });
 
@@ -85,29 +84,6 @@ public class RegisterBirthdayActivity extends AppCompatActivity implements DateP
         dateSelectorButton.setOnTouchListener(Button_OnTouch);
         dateSelectorButton.setOnKeyListener(Button_OnKey);
 
-        // FOR THE SPINNER
-        View.OnTouchListener Spinner_OnTouch = new View.OnTouchListener() {
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_UP) {
-                    showDatePickerDialog(v);
-                }
-                return true;
-            }
-        };
-
-        View.OnKeyListener Spinner_OnKey = new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER) {
-                    showDatePickerDialog(v);
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        };
-
-        dateSpinner.setOnTouchListener(Spinner_OnTouch);
-        dateSpinner.setOnKeyListener(Spinner_OnKey);
     }
 
     public void showDatePickerDialog(View v) {
@@ -129,12 +105,18 @@ public class RegisterBirthdayActivity extends AppCompatActivity implements DateP
     private void SignUp(String username, String password, String firstname, String lastname, String birthday) {
         // Create a Parse User
         ParseUser user = new ParseUser();
+
+
         // Set the core properties
         user.setUsername(username);
         user.setPassword(password);
         user.put("firstname", firstname);
         user.put("lastname", lastname);
-        user.put("birthdayString", selectedDate.getText().toString());
+        user.put("birthdayString", birthday);
+        ParseACL acl = new ParseACL();
+        acl.setPublicReadAccess(true);
+        acl.setPublicWriteAccess(true);
+        user.setACL(acl);
         // Invoke signUpInBackground
         user.signUpInBackground(new SignUpCallback() {
             @Override

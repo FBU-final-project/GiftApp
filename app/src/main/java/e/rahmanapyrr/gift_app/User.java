@@ -1,8 +1,8 @@
 package e.rahmanapyrr.gift_app;
 
 import com.parse.ParseClassName;
-import com.parse.ParseQuery;
-import com.parse.ParseUser;
+        import com.parse.ParseQuery;
+        import com.parse.ParseUser;
 
 @ParseClassName("_User")
 public class User extends ParseUser {
