@@ -174,4 +174,9 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
 
         }
     }
+
+    public void clear() {
+        myFav.clear();
+        notifyDataSetChanged();
+    }
 }

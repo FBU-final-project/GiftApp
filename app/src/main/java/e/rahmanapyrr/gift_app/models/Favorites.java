@@ -12,11 +12,14 @@ public class Favorites extends ParseObject{
     public static final String KEY_ITEM = "item";
     public static final String KEY_COUNTER = "counter";
 
-
-
     public String getItem(){ return getString(KEY_ITEM);}
 
+    public void setItem(String newItem){
+        put(KEY_ITEM, newItem);}
+
     public int getCounter(){ return getInt(KEY_COUNTER);}
+
+    public void setCounter(int newCount){put(KEY_COUNTER, newCount);}
 
     public void upVote(){
         int temp = getCounter();
@@ -35,8 +38,6 @@ public class Favorites extends ParseObject{
     public ParseUser getUser(){
         return getParseUser(KEY_USER);
         }
-
-
 
         public static class Query extends ParseQuery<Favorites> {
         public Query(){

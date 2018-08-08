@@ -12,6 +12,7 @@ public class User extends ParseUser {
     public static final String KEY_USER = "user";
     public static final String KEY_FIRST = "firstname";
     public static final String KEY_LAST = "lastname";
+    public static final String KEY_PIC = "ProfilePic";
 
         public String getUsername(){
             return getString(KEY_USERNAME);
@@ -33,6 +34,12 @@ public class User extends ParseUser {
         public void setUser(ParseUser user){
             put(KEY_USER, user);
         }
+
+        public ParseFile getProfilePic() {
+            return getParseUser(KEY_USER).getParseFile(KEY_PIC);
+         }
+
+        public void setProfilePic(ParseFile image) {put(KEY_PIC, image);}
 
 
         public User(){}
