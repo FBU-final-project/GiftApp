@@ -11,35 +11,28 @@ import android.widget.Toast;
 import e.rahmanapyrr.gift_app.R;
 
 public class RegisterActivity extends AppCompatActivity {
-
-
     private Button continueButton;
     private EditText createUsername;
     private EditText createPassword;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
         continueButton = findViewById(R.id.registerContinue);
         createUsername = findViewById(R.id.registerUsername);
         createPassword = findViewById(R.id.registerPassword);
-
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 checkValidCredentials();
             }
         });
-
-
     }
 
 
+    // Checks if fields are empty, if not sends info to following page through intent transfer
     private boolean checkValidCredentials() {
-
         if (createUsername.getText().toString().matches("") || createPassword.getText().toString().matches("")) {
             Toast.makeText(RegisterActivity.super.getBaseContext(), "Enter Valid username/password", Toast.LENGTH_SHORT).show();
             return false;
@@ -54,12 +47,8 @@ public class RegisterActivity extends AppCompatActivity {
             return true;
         }
     }
-
-
+    // Closes the activity and returns to login screen
     public void goBack() {
-        // closes the activity and returns to login screen
         this.finish();
     }
-
-
 }

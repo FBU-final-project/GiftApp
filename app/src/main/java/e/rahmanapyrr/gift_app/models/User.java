@@ -14,26 +14,35 @@ public class User extends ParseUser {
     public static final String KEY_LAST = "lastname";
     public static final String KEY_PIC = "ProfilePic";
 
-        public String getUsername(){
-            return getString(KEY_USERNAME);
-        }
+    public String getUsername() {
+        return getString(KEY_USERNAME);
+    }
 
-        public void setUsername(ParseFile username){
-            put(KEY_USERNAME, username);
-        }
+    public void setUsername(ParseFile username) {
+        put(KEY_USERNAME, username);
+    }
 
-        public String getFirstname(){ return getString(KEY_FIRST);}
+    public String getFirstname() {
+        return getString(KEY_FIRST);
+    }
 
-        public String getLastname() { return getString(KEY_LAST); }
+    public String getLastname() {
+        return getString(KEY_LAST);
+    }
 
+    private static final String KEY_BIRTHDAY = "birthdayString";
 
-        public ParseUser getUser(){
-            return getParseUser(KEY_USER);
-        }
+    public String getBirthday() {
+        return getString(KEY_BIRTHDAY);
+    }
 
-        public void setUser(ParseUser user){
-            put(KEY_USER, user);
-        }
+    public void setBirthday(String birthday) {
+        put(KEY_BIRTHDAY, birthday);
+    }
+
+    public ParseUser getUser() {
+        return getParseUser(KEY_USER);
+    }
 
         public ParseFile getProfilePic() {
             return getParseUser(KEY_USER).getParseFile(KEY_PIC);
@@ -41,24 +50,29 @@ public class User extends ParseUser {
 
         public void setProfilePic(ParseFile image) {put(KEY_PIC, image);}
 
-
-        public User(){}
-
-        public static class Query extends ParseQuery<User> {
-            public Query(){
-                super(User.class);
-            }
-
-            public Query getTop(){
-                setLimit(20);
-                return this;
-            }
-
-            public Query withUser(){
-                include("user");
-                return this;
-            }
-
-        }
+    public void setUser(ParseUser user) {
+        put(KEY_USER, user);
     }
+
+
+    public User() {
+    }
+
+    public static class Query extends ParseQuery<User> {
+        public Query() {
+            super(User.class);
+        }
+
+        public Query getTop() {
+            setLimit(20);
+            return this;
+        }
+
+        public Query withUser() {
+            include("user");
+            return this;
+        }
+
+    }
+}
 

@@ -48,6 +48,6 @@
                 android:resource="@xml/paths" />
         </provider>
 
-    </application>
+  </application>
 
 </manifest>
