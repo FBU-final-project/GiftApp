@@ -9,9 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
@@ -21,6 +25,8 @@ import java.util.List;
 import e.rahmanapyrr.gift_app.Profile.ProfileActivity;
 import e.rahmanapyrr.gift_app.R;
 import e.rahmanapyrr.gift_app.models.User;
+
+import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
 
 public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.ViewHolder> {
 
@@ -52,6 +58,12 @@ public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.Vi
         //holder.tvDate.setText(getRelativeTimeAgo(post.getCreatedAt().toString()));
 
         holder.Friend.setText(user.getUsername());
+        final ParseFile pic = user.getParseFile("ProfilePic");
+        if(pic != null){
+            Glide.with(context).load(pic.getUrl())
+                    .apply(bitmapTransform(new CircleCrop()))
+                    .into(holder.profilePic);
+        }
     }
 
     @Override
@@ -65,11 +77,13 @@ public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.Vi
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView Friend;
         public Button AddFriendbtn;
+        public ImageView profilePic;
 
         public ViewHolder(@NonNull final View itemView) {
             super(itemView);
             Friend = (TextView) itemView.findViewById(R.id.friendNameOption);
             AddFriendbtn = (Button) itemView.findViewById(R.id.addFriendbtn);
+            profilePic = itemView.findViewById(R.id.profile2);
 
             ///add friends///-----------------------------------
             AddFriendbtn.setOnClickListener(new View.OnClickListener() {

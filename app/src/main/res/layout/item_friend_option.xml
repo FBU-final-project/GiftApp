@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -7,14 +8,12 @@
 
     <TextView
         android:id="@+id/friendNameOption"
-        android:layout_width="197dp"
-        android:layout_height="88dp"
-        android:layout_alignParentStart="true"
+        android:layout_width="167dp"
+        android:layout_height="63dp"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="57dp"
+        android:layout_toStartOf="@+id/addFriendbtn"
         android:textAlignment="textStart"
-        android:textSize="30sp"
+        android:textSize="20sp"
         tools:layout_editor_absoluteX="83dp"
         tools:layout_editor_absoluteY="48dp" />
 
@@ -22,10 +21,19 @@
         android:id="@+id/addFriendbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/friendNameOption"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="51dp"
-        android:text="Add Friend"
-        android:onClick="goback"/>
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="16dp"
+        android:onClick="goback"
+        android:text="Add Friend" />
+
+    <ImageView
+        android:id="@+id/profile2"
+        android:layout_width="69dp"
+        android:layout_height="66dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/mark" />
 
 </RelativeLayout>

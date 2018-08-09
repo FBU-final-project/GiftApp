@@ -2,7 +2,6 @@ package e.rahmanapyrr.gift_app.Profile;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -36,7 +35,6 @@ public class PersonalPageActivity extends AppCompatActivity {
     Button captureButton;
     Button updateButton;
     ImageView photoView;
-    Bitmap bitmap;
     public Activity activity;
     File photoFile;
     public String photoFileName = "photo.jpg";
@@ -95,26 +93,6 @@ public class PersonalPageActivity extends AppCompatActivity {
         });
     }
 
-    /*
-    static final int REQUEST_IMAGE_CAPTURE = 1;
-
-    private void dispatchTakePictureIntent() {
-        Uri uri = FileProvider.getUriForFile(this, AUTHORITY, file);
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-        }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-        bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
-        photoView.setImageBitmap(this.bitmap);
-        }
-    }
-    */
 
     public void onLaunchCamera(View view) {
         // create Intent to take a picture and return control to the calling application

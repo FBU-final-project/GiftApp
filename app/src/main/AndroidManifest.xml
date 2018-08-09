@@ -29,8 +29,8 @@
         <activity android:name=".LogIn.RegisterBirthdayActivity" />
         <activity android:name=".LogIn.RegisterNameActivity" />
         <activity android:name=".ProductActivity.LinkActivity" />
+        <activity android:name=".Calendar.CalendarActivity"/>
         <activity android:name=".LogIn.RegisterActivity" />
-        <activity android:name=".Calendar.CalendarActivity" />
         <activity android:name=".Profile.ProfileActivity" />
         <activity android:name=".Friends.AddFriends" />
         <activity android:name=".Friends.CurrentUserFriends" />
