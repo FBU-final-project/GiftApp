@@ -4,7 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="10dp">
+    android:layout_marginBottom="10dp"
+    android:layout_marginTop="20dp"
+    android:elevation="5dp"
+    android:overScrollMode="ifContentScrolls"
+    app:layout_dodgeInsetEdges="top|bottom">
 
     <TextView
         android:id="@+id/friendNameOption"

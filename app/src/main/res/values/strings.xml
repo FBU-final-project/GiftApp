@@ -9,4 +9,5 @@
     <string name="Open">open</string>
     <string name="Close">close</string>
     <string name="menu">menu</string>
+    <string name="gcmdefaultSenderId">573107902137</string>
 </resources>

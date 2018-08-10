@@ -19,6 +19,7 @@ public class Favorites extends ParseObject{
 
     public int getCounter(){ return getInt(KEY_COUNTER);}
 
+
     public void setCounter(int newCount){put(KEY_COUNTER, newCount);}
 
     public void upVote(){

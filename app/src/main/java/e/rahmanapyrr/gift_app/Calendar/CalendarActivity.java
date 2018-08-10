@@ -1,6 +1,15 @@
 package e.rahmanapyrr.gift_app.Calendar;
 
+import android.content.Intent;
 import android.os.Bundle;
+
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
+
 import android.widget.Toast;
 
 import com.parse.FindCallback;
@@ -15,6 +24,10 @@ import java.util.Date;
 import java.util.List;
 
 import e.rahmanapyrr.gift_app.AppBaseActivity;
+
+import e.rahmanapyrr.gift_app.Friends.AddFriends;
+import e.rahmanapyrr.gift_app.Friends.CurrentUserFriends;
+
 import e.rahmanapyrr.gift_app.R;
 import e.rahmanapyrr.gift_app.models.User;
 
@@ -41,6 +54,7 @@ public class CalendarActivity extends AppBaseActivity {
         allUsers = new ArrayList<>();
 
         today = new Date();
+        System.out.println(today);
         Calendar nextYear = Calendar.getInstance();
         nextYear.add(Calendar.YEAR, 1);
 
@@ -62,6 +76,7 @@ public class CalendarActivity extends AppBaseActivity {
                 String selectedDate = "" + (calSelected.get(Calendar.MONTH) + 1)
                         + " " + calSelected.get(Calendar.DAY_OF_MONTH);
 
+                System.out.println(events);
                 for(List<String> s: events) {
                     if (s.get(0).equals(selectedDate)) {
                         event = true;
