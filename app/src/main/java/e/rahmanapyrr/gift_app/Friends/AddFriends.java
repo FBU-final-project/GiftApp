@@ -132,8 +132,4 @@ public class AddFriends extends AppBaseActivity {
         });
     }
 
-    @Override
-    public boolean onMenuItemClick(MenuItem menuItem) {
-        return false;
-    }
 }

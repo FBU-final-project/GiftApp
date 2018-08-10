@@ -65,9 +65,5 @@ public class CurrentUserFriends extends AppBaseActivity {
         });
     }
 
-    @Override
-    public boolean onMenuItemClick(MenuItem menuItem) {
-        return false;
-    }
 }
 
