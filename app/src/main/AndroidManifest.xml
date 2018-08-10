@@ -38,6 +38,7 @@
         <activity android:name=".Config.PaymentDetails" />
         <activity android:name=".Paypal.BuyingActivity" />
 
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="e.rahmanapyrr.gift_app"
@@ -48,6 +49,7 @@
                 android:resource="@xml/paths" />
         </provider>
 
-  </application>
+
+    </application>
 
 </manifest>

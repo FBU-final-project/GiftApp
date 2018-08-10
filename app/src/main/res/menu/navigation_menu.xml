@@ -2,8 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/navCalender"
-            android:title="@string/navCalender"
+            android:id="@+id/navCalendar"
+            android:title="@string/navCalendar"
             />
 
         <item
@@ -11,8 +11,15 @@
             android:title="@string/navCurrentFriends"/>
 
         <item
-            android:id="@+id/navAddFriends"
-            android:title="@string/navAddFriends"/>
+        android:id="@+id/navAddFriends"
+        android:title="@string/navAddFriends"/>
+
+        <item
+            android:id="@+id/navMyProfile"
+            android:title="@string/navMyProfile"/>
+        <item
+            android:id="@+id/navLogout"
+            android:title="@string/navLogout"/>
 
     </group>
 
