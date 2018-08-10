@@ -30,4 +30,14 @@ public class ParseApp extends Application {
 
         Parse.initialize(configuration);
     }
+
+
+
+    public void registerUP(){
+        ParseObject.registerSubclass(User.class);
+    }
+
+
+
+
 }

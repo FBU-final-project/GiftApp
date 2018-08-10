@@ -3,4 +3,14 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorBackgroundPink">#F5CBD5</color>
+    <color name="colorBackgroundPinkDark">#D0AAB1</color>
+    <color name="colorFrontBlue">#2197F3</color>
+    <color name="colorDarkerBlue">#3F51B5</color>
+    <color name="colorDarkestBlue">#1A237e</color>
+    <color name="colorHandleYellow">#F5F488</color>
+    <color name="colorSprinkleBlue">#1EE9E2</color>
+    <color name="colorSprinkleWhite">#FFFCFC</color>
+    <color name="colorSprinkleRed">#E91E63</color>
+    <color name="colorSprinkleGreen">#4CAF50</color>
 </resources>

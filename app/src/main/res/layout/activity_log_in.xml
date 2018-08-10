@@ -5,57 +5,97 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/white_wood"
     tools:context=".LogIn.LogInActivity">
 
-    <EditText
-        android:id="@+id/etLoginUsername"
-        android:layout_width="250dp"
-        android:layout_height="40dp"
-        android:layout_centerInParent="true"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textSize="16dp"
-        android:hint="Username" />
 
-    <EditText
-        android:id="@+id/etLoginPassword"
-        android:layout_width="250dp"
-        android:layout_height="40dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:textSize="16dp"
-        android:layout_below="@+id/etLoginUsername"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPersonName" />
-
-
-
-    <Button
-        android:id="@+id/bLogin"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/etLoginPassword"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/login_button"
-        android:text="Login"
-        android:textColor="#fff"
-        android:textSize="18dp" />
-
-
-
-
-    <TextView
-        android:id="@+id/tvRegisterButton"
+    <LinearLayout
+        android:id="@+id/llTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/bLogin"
+        android:orientation="horizontal"
+        android:layout_marginTop="140dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:text="Register Here"
-        android:textColor="@android:color/black"
-        android:textSize="14dp"
-        android:clickable="true"/>
+        android:layout_marginBottom="50dp">
+
+        <ImageView
+            android:id="@+id/ivLoginTitle"
+            android:background="@drawable/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true" />
+
+    </LinearLayout>
+
+    
+    <LinearLayout
+        android:id="@+id/llLoginStuff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
+        android:gravity="center|bottom">
+
+        <EditText
+            android:id="@+id/etLoginUsername"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:paddingLeft="10dp"
+            android:inputType="textPersonName"
+            android:background="@drawable/trans_white_rectangle"
+            android:textSize="16dp"
+            android:hint="Username"
+            android:layout_gravity="center_horizontal|bottom"/>
+
+        <EditText
+            android:id="@+id/etLoginPassword"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:paddingLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:textSize="16dp"
+            android:background="@drawable/trans_white_rectangle"
+            android:layout_below="@+id/etLoginUsername"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:layout_gravity="center_horizontal|bottom"/>
+
+        <Button
+            android:id="@+id/bLogin"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/etLoginPassword"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/login_button"
+            android:text="Login"
+            android:textColor="#fff"
+            android:textSize="18dp"
+            android:layout_gravity="center_horizontal|bottom"/>
+
+
+        <Button
+            android:id="@+id/bRegisterButton"
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="15dp"
+            android:text="Register Here"
+            android:layout_below="@id/bLogin"
+            android:layout_centerHorizontal="true"
+            android:textSize="16dp"
+            android:background="@drawable/pink_button"
+            android:textColor="@color/colorSprinkleWhite"
+            android:layout_gravity="center_horizontal|bottom"/>
+
+
+    </LinearLayout>
+    
+
 
 </RelativeLayout>

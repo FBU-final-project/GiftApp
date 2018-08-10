@@ -23,6 +23,7 @@ public class LogInActivity extends AppCompatActivity {
     private EditText passwordLogin;
     private TextView registerText;
     private Button loginButton;
+    private Button registerButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +31,9 @@ public class LogInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_log_in);
         usernameLogin = findViewById(R.id.etLoginUsername);
         passwordLogin = findViewById(R.id.etLoginPassword);
-        registerText = findViewById(R.id.tvRegisterButton);
+        registerButton = findViewById(R.id.bRegisterButton);
         loginButton = findViewById(R.id.bLogin);
-        registerText.setOnClickListener(new View.OnClickListener() {
+        registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final Intent intent = new Intent(LogInActivity.this, RegisterActivity.class);
