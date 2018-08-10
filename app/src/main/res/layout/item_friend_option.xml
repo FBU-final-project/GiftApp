@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="10dp">
+    android:layout_marginBottom="10dp"
+    android:layout_marginTop="20dp"
+    android:elevation="5dp"
+    android:overScrollMode="ifContentScrolls"
+    app:layout_dodgeInsetEdges="top|bottom">
 
     <TextView
         android:id="@+id/friendNameOption"
-        android:layout_width="197dp"
-        android:layout_height="88dp"
+        android:layout_width="217dp"
+        android:layout_height="73dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="57dp"
-        android:textAlignment="textStart"
-        android:textSize="30sp"
+        android:layout_marginStart="8dp"
+        android:elevation="5dp"
+        android:fontFamily="sans-serif"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
         tools:layout_editor_absoluteX="83dp"
         tools:layout_editor_absoluteY="48dp" />
 
@@ -22,10 +29,11 @@
         android:id="@+id/addFriendbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/friendNameOption"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="51dp"
-        android:text="Add Friend"
-        android:onClick="goback"/>
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="22dp"
+        android:elevation="24dp"
+        android:onClick="goback"
+        android:text="Add Friend" />
 
 </RelativeLayout>

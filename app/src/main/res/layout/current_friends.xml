@@ -7,23 +7,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Friends.CurrentUserFriends">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="185dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:fontFamily="sans-serif-condensed"
-        android:text="My Friends"
-        android:textAlignment="center"
-        android:textSize="25sp"
-        android:visibility="visible" />
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvcurrentFriends"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="41dp" />

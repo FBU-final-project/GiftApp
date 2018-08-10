@@ -37,7 +37,7 @@ public class CurrentUserFriendsAdapter extends RecyclerView.Adapter<CurrentUserF
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         ParseUser friend = CurrFriends.get(i);
-        viewHolder.Username.setText(friend.getUsername());
+        viewHolder.Username.setText(friend.get("firstname") + " " + friend.get("lastname"));
     }
 
     @Override
@@ -62,7 +62,7 @@ public class CurrentUserFriendsAdapter extends RecyclerView.Adapter<CurrentUserF
             if(position != RecyclerView.NO_POSITION){
             ParseUser user = CurrFriends.get(position);
                 Intent i = new Intent(context, ProfileActivity.class);
-                i.putExtra("username", user.getUsername());
+                i.putExtra("username", (user.get("firstname") + " " + user.get("lastname")));
                 //i.putExtra("photo", user.getImage().getUrl());
                 i.putExtra("firstname", user.getString("firstname"));
                 i.putExtra("lastname", user.getString("lastname"));

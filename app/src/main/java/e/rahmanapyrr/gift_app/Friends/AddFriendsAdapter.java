@@ -36,11 +36,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import e.rahmanapyrr.gift_app.CurrentUserFriends;
+import e.rahmanapyrr.gift_app.FCMMessageHandler;
 import e.rahmanapyrr.gift_app.ProfileActivity;
 import e.rahmanapyrr.gift_app.R;
 import e.rahmanapyrr.gift_app.models.User;
 
-public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.ViewHolder> {
+import static com.parse.Parse.getApplicationContext;
+
+public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.ViewHolder>  {
 
     private List<User> Users;
     ArrayList<ParseUser> friends;
@@ -66,7 +69,8 @@ public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.Vi
     public void onBindViewHolder(AddFriendsAdapter.ViewHolder holder, int position) {
         // get data
         ParseUser user = Users.get(position);
-        holder.Friend.setText(user.getUsername());
+//        holder.Friend.setText(user.getUsername());
+        holder.Friend_name.setText(user.get("firstname") + " " + user.get("lastname"));
     }
 
     @Override
@@ -77,11 +81,12 @@ public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.Vi
     public void AddFriendFunc(View view) {}
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView Friend;
+        public TextView Friend_name;
         public Button AddFriendbtn;
 
         public ViewHolder(@NonNull final View itemView) {
             super(itemView);
-            Friend = (TextView) itemView.findViewById(R.id.friendNameOption);
+            Friend_name = (TextView) itemView.findViewById(R.id.friendNameOption);
             AddFriendbtn = (Button) itemView.findViewById(R.id.addFriendbtn);
 
             ///add friends///-----------------------------------
@@ -139,6 +144,21 @@ public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.Vi
     public void addAll(List<User> list) {
         Users.addAll(list);
         notifyDataSetChanged();
+    }
+
+    public void sendNotification(String body) {
+        Uri notificationSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+
+        NotificationCompat.Builder notifiBuilder = new NotificationCompat.Builder(getApplicationContext())
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle("Firebase Cloud Messaging")
+                .setContentText(body)
+                .setAutoCancel(true)
+                .setSound(notificationSound);
+
+        Notification notification= notifiBuilder.build();
+        NotificationManager manager = (NotificationManager)getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        manager.notify(0/*ID of notify:*/, notification);
     }
 
 }

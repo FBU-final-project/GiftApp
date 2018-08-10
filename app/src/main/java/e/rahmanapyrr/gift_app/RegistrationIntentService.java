@@ -11,10 +11,9 @@ import com.google.android.gms.iid.InstanceID;
 
 import java.io.IOException;
 
-public class RegistrationIntentService extends IntentService{
+public class RegistrationIntentService extends IntentService {
         // abbreviated tag name
         private static final String TAG = "RegIntentService";
-
         public RegistrationIntentService() {
             super(TAG);
         }
@@ -46,7 +45,6 @@ public class RegistrationIntentService extends IntentService{
 
         private void sendRegistrationToServer(String token) {
             // Add custom implementation, as needed.
-
             // if registration sent was successful, store a boolean that indicates whether the generated token has been sent to server
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
             sharedPreferences.edit().putBoolean(SENT_TOKEN_TO_SERVER, true).apply();

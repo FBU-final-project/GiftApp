@@ -22,6 +22,7 @@ import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
+import java.text.SimpleDateFormat;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
@@ -32,6 +33,8 @@ import org.joda.time.*;
 import java.time.temporal.ChronoUnit;
 
 import e.rahmanapyrr.gift_app.Friends.AddFriends;
+
+import static org.joda.time.Years.yearsBetween;
 
 public class FCMMessageHandler extends FirebaseMessagingService {
     public static final String TAG = "MyFirebaseMsgService";
@@ -45,6 +48,7 @@ public class FCMMessageHandler extends FirebaseMessagingService {
         // Verifica se a mensagem contém uma carga útil de dados.
         if (remoteMessage.getData().size() > 0) {
             Log.d(TAG, "Message data: ," + remoteMessage.getData());
+
             sendNotification(remoteMessage.getNotification().getBody());
 //            showNotification(remoteMessage.getData().get("description"), remoteMessage.getData().get("description"));
         }
@@ -105,10 +109,54 @@ public class FCMMessageHandler extends FirebaseMessagingService {
 //            ChronoUnit.DAYS.between(birthdate, today.atStartOfDay());
                 if(days == 14){
                 sendNotification(friend.getUsername() + " 's Birthday is coming up soon!");
+
             }
+
+            DateTime dateTime = new DateTime();
+            System.out.println(dateTime);
+            System.out.println(dateTime.minusDays(14));
+
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
         }
 // Mon Aug 06 15:26:58 PDT 2018
+
+    }
+
+    private void sendBirthdayNotice(){
+
+        friends = new ArrayList<>();
+        final ParseRelation<ParseUser> friend_relations = ParseUser.getCurrentUser().getRelation("FriendRelation");
+        ParseQuery<ParseUser> friends_list = friend_relations.getQuery();
+        friends_list.findInBackground(new FindCallback<ParseUser>() {
+            @Override
+            public void done(List<ParseUser> objects, com.parse.ParseException e) {
+                if (e == null) {
+                    friends.clear();
+                    friends.addAll(objects);
+                } else {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        SimpleDateFormat sdf = new SimpleDateFormat("MMM d, yyyy");
+        DateTime today = new DateTime();
+        for(ParseUser friend : friends){
+            String strDate = friend.get("birthdayString").toString();
+            Date date = null;
+            try {
+                date = sdf.parse(strDate);
+            } catch (java.text.ParseException e) {
+                e.printStackTrace();
+            }
+            DateTime dateTime = new DateTime(date);
+            Years age = yearsBetween(dateTime, today);
+            DateTime next_birthday = dateTime.plusYears(age.getYears()+ 1);
+            System.out.println("Two weeks before next birthday: " + next_birthday.minusDays(14));
+        }
+
+
     }
 
 }
