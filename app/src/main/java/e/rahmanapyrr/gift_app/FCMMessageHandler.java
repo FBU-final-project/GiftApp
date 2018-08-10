@@ -33,6 +33,7 @@ import org.joda.time.*;
 import java.time.temporal.ChronoUnit;
 
 import e.rahmanapyrr.gift_app.Friends.AddFriends;
+import e.rahmanapyrr.gift_app.Friends.CurrentUserFriends;
 
 import static org.joda.time.Years.yearsBetween;
 

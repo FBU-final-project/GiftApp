@@ -9,12 +9,7 @@ import android.graphics.drawable.shapes.Shape;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
+
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
@@ -42,9 +37,10 @@ import e.rahmanapyrr.gift_app.R;
 import e.rahmanapyrr.gift_app.models.User;
 
 import e.rahmanapyrr.gift_app.FCMMessageHandler.*;
-
 import static com.parse.Parse.getApplicationContext;
 import static org.joda.time.Years.yearsBetween;
+import e.rahmanapyrr.gift_app.R;
+import e.rahmanapyrr.gift_app.models.User;
 
 public class AddFriends extends AppBaseActivity {
     ArrayList<User> users;
@@ -134,5 +130,10 @@ public class AddFriends extends AppBaseActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem menuItem) {
+        return false;
     }
 }

@@ -13,7 +13,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
         <EditText
             android:id="@+id/edtamount"
             android:hint="Enter Amount"
@@ -27,8 +26,8 @@
             android:layout_height="wrap_content" />
 
 
-
-
+        
+        
     </LinearLayout>
 
 

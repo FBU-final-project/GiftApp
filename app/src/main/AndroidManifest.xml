@@ -3,12 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="e.rahmanapyrr.gift_app">
 
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <permission android:name="e.rahmanapyrr.gift_app.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
     <uses-permission android:name="com.example.gcm.permission.C2D_MESSAGE" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".ParseApp"
@@ -35,7 +43,10 @@
         <activity android:name=".Friends.AddFriends" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".Friends.CurrentUserFriends" />
-        <activity android:name=".CurrentUserFriends" />
+        <activity android:name=".Profile.ProfileActivity" />
+        <activity android:name=".Profile.PersonalPageActivity" android:exported="true"/>
+        <activity android:name=".Config.PaymentDetails" />
+        <activity android:name=".Paypal.BuyingActivity" />
 
         <receiver
             android:name="com.google.android.gms.gcm.GcmReceiver"
@@ -68,6 +79,16 @@
         </service>
         <service android:name=".RegistrationIntentService" android:exported="false"/>
 
-    </application>
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="e.rahmanapyrr.gift_app"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/paths" />
+        </provider>
+
+  </application>
 
 </manifest>

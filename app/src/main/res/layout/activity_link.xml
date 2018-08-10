@@ -34,6 +34,15 @@
     </LinearLayout>
 
 
+    <Button
+        android:id="@+id/takePaypal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:text="Take me to Paypal Activity"
+        />
+
+
 
 
 </RelativeLayout>

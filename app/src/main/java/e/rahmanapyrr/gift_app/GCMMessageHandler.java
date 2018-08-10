@@ -12,6 +12,8 @@ import android.support.v4.app.NotificationCompat;
 
 import com.google.android.gms.gcm.GcmListenerService;
 
+import e.rahmanapyrr.gift_app.Friends.CurrentUserFriends;
+
 
 public class GCMMessageHandler extends GcmListenerService {
 

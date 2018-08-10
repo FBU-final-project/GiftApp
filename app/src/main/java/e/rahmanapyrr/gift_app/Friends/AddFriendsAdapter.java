@@ -20,11 +20,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
@@ -35,15 +40,18 @@ import org.joda.time.Days;
 import java.util.ArrayList;
 import java.util.List;
 
-import e.rahmanapyrr.gift_app.CurrentUserFriends;
+import e.rahmanapyrr.gift_app.Friends.CurrentUserFriends;
 import e.rahmanapyrr.gift_app.FCMMessageHandler;
 import e.rahmanapyrr.gift_app.ProfileActivity;
 import e.rahmanapyrr.gift_app.R;
 import e.rahmanapyrr.gift_app.models.User;
 
+
 import static com.parse.Parse.getApplicationContext;
 
-public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.ViewHolder>  {
+import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
+
+public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.ViewHolder> {
 
     private List<User> Users;
     ArrayList<ParseUser> friends;
@@ -71,6 +79,18 @@ public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.Vi
         ParseUser user = Users.get(position);
 //        holder.Friend.setText(user.getUsername());
         holder.Friend_name.setText(user.get("firstname") + " " + user.get("lastname"));
+
+        //String myTime = TimeFormat.getTimeDifference(user.getCreatedAt().toString());
+        //            holder.time.setText(myTime);
+        //holder.tvDate.setText(getRelativeTimeAgo(post.getCreatedAt().toString()));
+
+//        holder.Friend.setText(user.getUsername());
+        final ParseFile pic = user.getParseFile("ProfilePic");
+        if(pic != null){
+            Glide.with(context).load(pic.getUrl())
+                    .apply(bitmapTransform(new CircleCrop()))
+                    .into(holder.profilePic);
+        }
     }
 
     @Override
@@ -83,11 +103,13 @@ public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.Vi
         public TextView Friend;
         public TextView Friend_name;
         public Button AddFriendbtn;
+        public ImageView profilePic;
 
         public ViewHolder(@NonNull final View itemView) {
             super(itemView);
             Friend_name = (TextView) itemView.findViewById(R.id.friendNameOption);
             AddFriendbtn = (Button) itemView.findViewById(R.id.addFriendbtn);
+            profilePic = itemView.findViewById(R.id.profile2);
 
             ///add friends///-----------------------------------
             AddFriendbtn.setOnClickListener(new View.OnClickListener() {
