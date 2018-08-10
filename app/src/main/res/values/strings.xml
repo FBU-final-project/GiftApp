@@ -4,7 +4,8 @@
     <string name="navCurrentFriends">My Friends</string>
     <string name="navMyProfile">My Profile</string>
     <string name="navLogout">Logout</string>
-    <string name="navCalendar">Calendar</string>
+    <string name="navCalendar">Upcoming Events</string>
+    <string name="navPaypal">Pay Friends</string>
     <string name="Open">open</string>
     <string name="Close">close</string>
     <string name="menu">menu</string>
