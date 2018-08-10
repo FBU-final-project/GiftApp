@@ -18,9 +18,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import com.parse.ParseUser;
+import com.paypal.android.sdk.payments.LoginActivity;
+
 import e.rahmanapyrr.gift_app.Calendar.CalendarActivity;
 import e.rahmanapyrr.gift_app.Friends.AddFriends;
 import e.rahmanapyrr.gift_app.Friends.CurrentUserFriends;
+import e.rahmanapyrr.gift_app.LogIn.LogInActivity;
+import e.rahmanapyrr.gift_app.Profile.PersonalPageActivity;
 
 public abstract class AppBaseActivity extends AppCompatActivity implements MenuItem.OnMenuItemClickListener {
     private FrameLayout view_stub; //This is the framelayout to keep your content view
@@ -111,7 +116,7 @@ public abstract class AppBaseActivity extends AppCompatActivity implements MenuI
                 startActivity(i);
                 finish();
                 break;
-            case R.id.navCalender:
+            case R.id.navCalendar:
                 Intent o = new Intent(this, CalendarActivity.class);
                 startActivity(o);
                 finish();
@@ -119,6 +124,18 @@ public abstract class AppBaseActivity extends AppCompatActivity implements MenuI
             case R.id.navCurrentFriends:
                 Intent p = new Intent(this, CurrentUserFriends.class);
                 startActivity(p);
+                finish();
+                break;
+
+            case R.id.navMyProfile:
+                Intent q = new Intent(this, PersonalPageActivity.class);
+                startActivity(q);
+                finish();
+                break;
+            case R.id.navLogout:
+                ParseUser.logOut();
+                Intent r = new Intent(this, LogInActivity.class);
+                startActivity(r);
                 finish();
                 break;
         }
