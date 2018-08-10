@@ -3,7 +3,6 @@ package e.rahmanapyrr.gift_app.Friends;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
-import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -28,7 +27,6 @@ import com.parse.SaveCallback;
 import java.util.ArrayList;
 import java.util.List;
 
-import e.rahmanapyrr.gift_app.Profile.ProfileActivity;
 import e.rahmanapyrr.gift_app.R;
 import e.rahmanapyrr.gift_app.models.User;
 
@@ -82,7 +80,7 @@ public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.Vi
     }
 
     public void AddFriendFunc(View view) {}
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView Friend;
         public TextView Friend_name;
         public Button AddFriendbtn;
@@ -120,23 +118,8 @@ public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.Vi
             });
 
         //when the user clicks on a row, show MovieDetailsActivity for the selected movie
-                    itemView.setOnClickListener(this);
-        }
-        @Override
-        public void onClick(View view) {
-            int position = getAdapterPosition();
-            // make sure the position is valid, i.e. actually exists in the view
-            if (position != RecyclerView.NO_POSITION) {
-                // get the movie at the position, this won't work if the class is static
-                ParseUser user = Users.get(position);
-                // create intent for the new activity
-                Intent intent = new Intent(context, ProfileActivity.class);
-                // serialize the movie using parceler, use its short name as a key
 
-                intent.putExtra("username", user.getUsername());
-                context.startActivity(intent);
         }
-     }
     }
 
     // Clean all elements of the recycler
