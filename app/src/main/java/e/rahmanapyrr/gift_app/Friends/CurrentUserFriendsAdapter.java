@@ -87,6 +87,7 @@ public class CurrentUserFriendsAdapter extends RecyclerView.Adapter<CurrentUserF
                 i.putExtra("firstname", user.getString("firstname"));
                 i.putExtra("lastname", user.getString("lastname"));
                 i.putExtra("birthday", user.getString("birthdayString"));
+                i.putExtra("parseuser", user);
 
                 context.startActivity(i);
             }
