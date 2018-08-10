@@ -1,9 +1,5 @@
 package e.rahmanapyrr.gift_app;
 
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.content.Context;
-
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -19,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.parse.ParseUser;
-import com.paypal.android.sdk.payments.LoginActivity;
 
 import e.rahmanapyrr.gift_app.Calendar.CalendarActivity;
 import e.rahmanapyrr.gift_app.Friends.AddFriends;
@@ -34,6 +29,8 @@ public abstract class AppBaseActivity extends AppCompatActivity implements MenuI
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private Menu drawerMenu;
+
+    public AppBaseActivity(){}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,9 +69,11 @@ public abstract class AppBaseActivity extends AppCompatActivity implements MenuI
     public void setContentView(int layoutResID) {
         if (view_stub != null) {
             LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+
             ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT);
+
             View stubView = inflater.inflate(layoutResID, view_stub, false);
             view_stub.addView(stubView, lp);
         }

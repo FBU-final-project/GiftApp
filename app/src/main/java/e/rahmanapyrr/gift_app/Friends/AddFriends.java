@@ -1,44 +1,20 @@
 package e.rahmanapyrr.gift_app.Friends;
 
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.drawable.shapes.Shape;
-import android.media.RingtoneManager;
-import android.net.Uri;
 import android.os.Bundle;
-
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.format.DateUtils;
-import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.parse.FindCallback;
-import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
 
-import org.joda.time.DateTime;
-import org.joda.time.Years;
-
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import e.rahmanapyrr.gift_app.AppBaseActivity;
-import e.rahmanapyrr.gift_app.Calendar.CalendarActivity;
-import e.rahmanapyrr.gift_app.R;
-import e.rahmanapyrr.gift_app.models.User;
-
-import e.rahmanapyrr.gift_app.FCMMessageHandler.*;
-import static com.parse.Parse.getApplicationContext;
-import static org.joda.time.Years.yearsBetween;
 import e.rahmanapyrr.gift_app.R;
 import e.rahmanapyrr.gift_app.models.User;
 
@@ -132,8 +108,4 @@ public class AddFriends extends AppBaseActivity {
         });
     }
 
-    @Override
-    public boolean onMenuItemClick(MenuItem menuItem) {
-        return false;
-    }
 }

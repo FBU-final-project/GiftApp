@@ -1,13 +1,7 @@
 package e.rahmanapyrr.gift_app.Friends;
 
 import android.app.Notification;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.FirebaseInstanceIdService;
-import com.google.firebase.internal.FirebaseAppHelper;
-import com.google.firebase.messaging.FirebaseMessaging;
-
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
@@ -23,9 +17,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.parse.FindCallback;
-import com.parse.ParseException;
-import com.parse.ParseQuery;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.parse.ParseException;
@@ -34,28 +25,20 @@ import com.parse.ParseRelation;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
-import org.joda.time.DateTime;
-import org.joda.time.Days;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import e.rahmanapyrr.gift_app.Friends.CurrentUserFriends;
-import e.rahmanapyrr.gift_app.FCMMessageHandler;
 import e.rahmanapyrr.gift_app.ProfileActivity;
 import e.rahmanapyrr.gift_app.R;
 import e.rahmanapyrr.gift_app.models.User;
 
-
-import static com.parse.Parse.getApplicationContext;
-
 import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
+import static com.parse.Parse.getApplicationContext;
 
 public class AddFriendsAdapter extends RecyclerView.Adapter<AddFriendsAdapter.ViewHolder> {
 
     private List<User> Users;
     ArrayList<ParseUser> friends;
-    DateTime today = new DateTime();
 
     Context context;
 
