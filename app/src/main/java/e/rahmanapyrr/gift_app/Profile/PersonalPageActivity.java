@@ -51,7 +51,6 @@ public class PersonalPageActivity extends AppBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_page);
 
-        logoutButton = findViewById(R.id.logoutBtn);
         captureButton = findViewById(R.id.captureBtn);
         updateButton = findViewById(R.id.updateBtn);
         photoView = findViewById(R.id.photo);

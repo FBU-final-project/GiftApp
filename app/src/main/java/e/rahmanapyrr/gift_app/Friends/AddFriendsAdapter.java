@@ -28,7 +28,7 @@ import com.parse.SaveCallback;
 import java.util.ArrayList;
 import java.util.List;
 
-import e.rahmanapyrr.gift_app.ProfileActivity;
+import e.rahmanapyrr.gift_app.Profile.ProfileActivity;
 import e.rahmanapyrr.gift_app.R;
 import e.rahmanapyrr.gift_app.models.User;
 

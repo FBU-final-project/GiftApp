@@ -17,7 +17,7 @@ import com.parse.ParseUser;
 
 import java.util.List;
 
-import e.rahmanapyrr.gift_app.ProfileActivity;
+import e.rahmanapyrr.gift_app.Profile.ProfileActivity;
 import e.rahmanapyrr.gift_app.R;
 
 import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
