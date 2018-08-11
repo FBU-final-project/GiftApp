@@ -82,8 +82,7 @@ public class CurrentUserFriendsAdapter extends RecyclerView.Adapter<CurrentUserF
             if(position != RecyclerView.NO_POSITION){
             ParseUser user = CurrFriends.get(position);
                 Intent i = new Intent(context, ProfileActivity.class);
-                i.putExtra("username", (user.get("firstname") + " " + user.get("lastname")));
-                //i.putExtra("photo", user.getImage().getUrl());
+                i.putExtra("username", user.getUsername());
                 i.putExtra("firstname", user.getString("firstname"));
                 i.putExtra("lastname", user.getString("lastname"));
                 i.putExtra("birthday", user.getString("birthdayString"));

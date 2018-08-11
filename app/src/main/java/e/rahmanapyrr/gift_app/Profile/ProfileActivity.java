@@ -142,9 +142,21 @@ public class ProfileActivity extends AppBaseActivity {
             public void done(List<Favorites> objects, com.parse.ParseException e) {
                 if (e == null) {
                     faves.clear();
-                    faves.addAll(objects);
-                    favAdapter.notifyDataSetChanged();
-                } else {
+                    if (objects.size() == 0) {
+                        System.out.println("nooo");
+                    } else {
+                        for (Favorites i : objects) {
+                            System.out.println(i);
+                            System.out.println(i.getItem());
+                            if (i.getItem() == null) {
+                                System.out.println("ahhhhh");
+                            } else {
+                                faves.add(i);
+                            }
+                        }
+                        favAdapter.notifyDataSetChanged();
+                    }
+                }else {
                     e.printStackTrace();
                 }
             }
