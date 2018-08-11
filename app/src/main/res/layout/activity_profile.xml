@@ -69,7 +69,9 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/profileRv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+        android:layout_height="320dp">
+
+    </android.support.v7.widget.RecyclerView>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -79,6 +81,8 @@
             android:id="@+id/addItemEt"
             android:layout_width="325dp"
             android:layout_height="82dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:hint="Enter a goodie to put in their bag!"
             android:textSize="20sp" />
 

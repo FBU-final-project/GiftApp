@@ -52,7 +52,7 @@ public class CurrentUserFriendsAdapter extends RecyclerView.Adapter<CurrentUserF
             Glide.with(context).load(pic.getUrl())
                     .apply(bitmapTransform(new CircleCrop()))
                     .into(viewHolder.profilePic);
-        }
+    }
     }
 
     @Override
