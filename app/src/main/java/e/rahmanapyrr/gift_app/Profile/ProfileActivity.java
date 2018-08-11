@@ -148,7 +148,7 @@ public class ProfileActivity extends AppBaseActivity {
                         for (Favorites i : objects) {
                             System.out.println(i);
                             System.out.println(i.getItem());
-                            if (i.getItem() == null) {
+                            if (i.getItem() == null || i.getItem().equals("")) {
                                 System.out.println("ahhhhh");
                             } else {
                                 faves.add(i);
