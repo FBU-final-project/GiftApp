@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="e.rahmanapyrr.gift_app">
 
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <permission android:name="e.rahmanapyrr.gift_app.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="com.example.gcm.permission.C2D_MESSAGE" />
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
 
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -19,6 +26,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <!-- tools:node="replace" -->
         <activity android:name=".LogIn.LogInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,16 +36,49 @@
             </intent-filter>
         </activity>
         <activity android:name=".LogIn.RegisterBirthdayActivity" />
+        <activity android:name=".Calendar.CalendarActivity" />
         <activity android:name=".LogIn.RegisterNameActivity" />
         <activity android:name=".ProductActivity.LinkActivity" />
-        <activity android:name=".Calendar.CalendarActivity"/>
         <activity android:name=".LogIn.RegisterActivity" />
-        <activity android:name=".Profile.ProfileActivity" />
         <activity android:name=".Friends.AddFriends" />
+        <activity android:name=".ProfileActivity" />
         <activity android:name=".Friends.CurrentUserFriends" />
+        <activity android:name=".Profile.ProfileActivity" />
         <activity android:name=".Profile.PersonalPageActivity" android:exported="true"/>
         <activity android:name=".Config.PaymentDetails" />
         <activity android:name=".Paypal.BuyingActivity" />
+
+        <receiver
+            android:name="com.google.android.gms.gcm.GcmReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <category android:name="com.google.android.gms.gcm" />
+            </intent-filter>
+        </receiver>
+        <service
+            android:name=".GCMMessageHandler"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+
+        <service android:name=".FCMMessageHandler">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".MyInstanceIDListenerService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.gms.iid.InstanceID" />
+            </intent-filter>
+        </service>
+        <service android:name=".RegistrationIntentService" android:exported="false"/>
+
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -48,6 +90,7 @@
                 android:resource="@xml/paths" />
         </provider>
 
-  </application>
+
+    </application>
 
 </manifest>

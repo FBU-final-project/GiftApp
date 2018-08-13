@@ -15,6 +15,8 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 
 import e.rahmanapyrr.gift_app.Friends.AddFriends;
+
+
 import e.rahmanapyrr.gift_app.R;
 
 public class LogInActivity extends AppCompatActivity {

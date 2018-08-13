@@ -14,104 +14,109 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import com.parse.ParseUser;
+
 import e.rahmanapyrr.gift_app.Calendar.CalendarActivity;
 import e.rahmanapyrr.gift_app.Friends.AddFriends;
 import e.rahmanapyrr.gift_app.Friends.CurrentUserFriends;
+import e.rahmanapyrr.gift_app.LogIn.LogInActivity;
+import e.rahmanapyrr.gift_app.Paypal.BuyingActivity;
+import e.rahmanapyrr.gift_app.Profile.PersonalPageActivity;
 
-public abstract class AppBaseActivity extends AppCompatActivity implements MenuItem.OnMenuItemClickListener
-{
-    private FrameLayout view_stub;
-    private NavigationView navigation_view;
+public abstract class AppBaseActivity extends AppCompatActivity implements MenuItem.OnMenuItemClickListener {
+    private FrameLayout view_stub; //This is the framelayout to keep your content view
+    private NavigationView navigation_view; // The new navigation view from Android Design Library. Can inflate menu resources. Easy
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private Menu drawerMenu;
 
-    public AppBaseActivity() {}
+    public AppBaseActivity(){}
 
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.setContentView(R.layout.app_base_layout);
-        view_stub = ((FrameLayout)findViewById(R.id.view_stub));
-        navigation_view = ((NavigationView)findViewById(R.id.navigation_view));
-        mDrawerLayout = ((DrawerLayout)findViewById(R.id.drawer_layout));
+        super.setContentView(R.layout.app_base_layout);// The base layout that contains your navigation drawer.
+        view_stub = (FrameLayout) findViewById(R.id.view_stub);
+        navigation_view = (NavigationView) findViewById(R.id.navigation_view);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, 0, 0);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         drawerMenu = navigation_view.getMenu();
-        for (int i = 0; i < drawerMenu.size(); i++) {
+        for(int i = 0; i < drawerMenu.size(); i++) {
             drawerMenu.getItem(i).setOnMenuItemClickListener(this);
         }
+        // and so on...
     }
 
-
-    protected void onPostCreate(Bundle savedInstanceState)
-    {
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         mDrawerToggle.syncState();
     }
 
-    public void onConfigurationChanged(Configuration newConfig)
-    {
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
-
-
-
-    public void setContentView(int layoutResID)
-    {
+    /* Override all setContentView methods to put the content view to the FrameLayout view_stub
+     * so that, we can make other activity implementations looks like normal activity subclasses.
+     */
+    @Override
+    public void setContentView(int layoutResID) {
         if (view_stub != null) {
-            LayoutInflater inflater = (LayoutInflater)getSystemService("layout_inflater");
-            ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(-1, -1);
+            LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
 
+            ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT);
 
             View stubView = inflater.inflate(layoutResID, view_stub, false);
             view_stub.addView(stubView, lp);
         }
     }
 
-    public void setContentView(View view)
-    {
+    @Override
+    public void setContentView(View view) {
         if (view_stub != null) {
-            ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(-1, -1);
-
-
+            ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT);
             view_stub.addView(view, lp);
         }
     }
 
-    public void setContentView(View view, ViewGroup.LayoutParams params)
-    {
+    @Override
+    public void setContentView(View view, ViewGroup.LayoutParams params) {
         if (view_stub != null) {
             view_stub.addView(view, params);
         }
     }
 
-
-
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Pass the event to ActionBarDrawerToggle, if it returns
+        // true, then it has handled the app icon touch event
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-
+        // Handle your other action bar items...
 
         return super.onOptionsItemSelected(item);
     }
 
     @Override
-    public boolean onMenuItemClick(MenuItem item)
-    {
+    public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.navAddFriends:
                 Intent i = new Intent(this, AddFriends.class);
                 startActivity(i);
                 finish();
                 break;
-            case R.id.navCalender:
+            case R.id.navCalendar:
                 Intent o = new Intent(this, CalendarActivity.class);
                 startActivity(o);
                 finish();
@@ -121,8 +126,25 @@ public abstract class AppBaseActivity extends AppCompatActivity implements MenuI
                 startActivity(p);
                 finish();
                 break;
-        }
 
+            case R.id.navMyProfile:
+                Intent q = new Intent(this, PersonalPageActivity.class);
+                startActivity(q);
+                finish();
+                break;
+            case R.id.navLogout:
+                ParseUser.logOut();
+                Intent r = new Intent(this, LogInActivity.class);
+                startActivity(r);
+                finish();
+                break;
+            case R.id.navPaypal:
+                Intent s = new Intent(this, BuyingActivity.class);
+                startActivity(s);
+                finish();
+                break;
+        }
         return false;
     }
+
 }

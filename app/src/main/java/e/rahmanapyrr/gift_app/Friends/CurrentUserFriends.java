@@ -21,13 +21,11 @@ public class CurrentUserFriends extends AppBaseActivity {
     CurrentUserFriendsAdapter adapter;
     RecyclerView rvcurrentFriends;
 
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.current_friends);
 
         friends = new ArrayList<>();
-
         adapter = new CurrentUserFriendsAdapter(friends);
         rvcurrentFriends = findViewById(R.id.rvcurrentFriends);
         rvcurrentFriends.setLayoutManager(new LinearLayoutManager(this));
@@ -37,30 +35,23 @@ public class CurrentUserFriends extends AppBaseActivity {
 
 
     public void populateTimeline() {
-                    ParseUser currentUserClass = ParseUser.getCurrentUser();
+        ParseUser currentUserClass = ParseUser.getCurrentUser();
 
-                    final ParseRelation<ParseUser> friend_relations = currentUserClass.getRelation("FriendRelation");
-                    ParseQuery<ParseUser> friends_list = friend_relations.getQuery();
-                    friends_list.findInBackground(new FindCallback<ParseUser>() {
-                        @Override
-                        public void done(List<ParseUser> objects, com.parse.ParseException e) {
-                            if (e == null) {
-                                friends.clear();
-                                friends.addAll(objects);
-                                adapter.notifyDataSetChanged();
-                            } else {
-                                e.printStackTrace();
-                            }
-                        }
-                    });
+        final ParseRelation<ParseUser> friend_relations = currentUserClass.getRelation("FriendRelation");
+        ParseQuery<ParseUser> friends_list = friend_relations.getQuery();
+        friends_list.findInBackground(new FindCallback<ParseUser>() {
+            @Override
+            public void done(List<ParseUser> objects, com.parse.ParseException e) {
+                if (e == null) {
+                    friends.clear();
+                    friends.addAll(objects);
+                    adapter.notifyDataSetChanged();
+                    } else {
+                    e.printStackTrace();
                 }
+            }
+        });
+    }
 
-
-
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//    // Inflate the menu; this adds items to the action bar if it is present.
-//    getMenuInflater().inflate(R.menu.navigation, menu);
-//    return true;
-//}
 }
 

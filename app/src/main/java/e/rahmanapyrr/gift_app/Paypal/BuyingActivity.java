@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,11 +19,12 @@ import org.json.JSONException;
 
 import java.math.BigDecimal;
 
+import e.rahmanapyrr.gift_app.AppBaseActivity;
 import e.rahmanapyrr.gift_app.Config.Config;
 import e.rahmanapyrr.gift_app.Config.PaymentDetails;
 import e.rahmanapyrr.gift_app.R;
 
-public class BuyingActivity extends AppCompatActivity {
+public class BuyingActivity extends AppBaseActivity {
 
     // Should be passed through intents when clicking on pay now button from Profile VIEW
     String usernameToDonate;

@@ -2,12 +2,13 @@ package e.rahmanapyrr.gift_app.Profile;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -23,18 +24,21 @@ import com.parse.SaveCallback;
 
 import java.io.File;
 
+import e.rahmanapyrr.gift_app.AppBaseActivity;
 import e.rahmanapyrr.gift_app.R;
 
 import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
 
-public class PersonalPageActivity extends AppCompatActivity {
+public class PersonalPageActivity extends AppBaseActivity {
 
     private static final String AUTHORITY = "e.rahmanapyrr.gift_app";
 
     Button logoutButton;
     Button captureButton;
+    Bitmap bitmap;
     Button updateButton;
     ImageView photoView;
+    File file;
     public Activity activity;
     File photoFile;
     public String photoFileName = "photo.jpg";
@@ -47,7 +51,6 @@ public class PersonalPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_page);
 
-        logoutButton = findViewById(R.id.logoutBtn);
         captureButton = findViewById(R.id.captureBtn);
         updateButton = findViewById(R.id.updateBtn);
         photoView = findViewById(R.id.photo);
@@ -131,4 +134,23 @@ public class PersonalPageActivity extends AppCompatActivity {
         File file = new File(mediaStorageDir.getPath() + File.separator + fileName);
         return file;
     }
+
+
+    static final int REQUEST_IMAGE_CAPTURE = 1;
+     private void dispatchTakePictureIntent() {
+        Uri uri = FileProvider.getUriForFile(this, AUTHORITY, file);
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
+     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+        bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+        photoView.setImageBitmap(this.bitmap);
+        }
+    }
+
 }

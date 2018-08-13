@@ -41,6 +41,7 @@ public class CalendarActivity extends AppBaseActivity {
         allUsers = new ArrayList<>();
 
         today = new Date();
+        System.out.println(today);
         Calendar nextYear = Calendar.getInstance();
         nextYear.add(Calendar.YEAR, 1);
 
@@ -62,6 +63,7 @@ public class CalendarActivity extends AppBaseActivity {
                 String selectedDate = "" + (calSelected.get(Calendar.MONTH) + 1)
                         + " " + calSelected.get(Calendar.DAY_OF_MONTH);
 
+                System.out.println(events);
                 for(List<String> s: events) {
                     if (s.get(0).equals(selectedDate)) {
                         event = true;

@@ -2,15 +2,15 @@ package e.rahmanapyrr.gift_app.Config;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import e.rahmanapyrr.gift_app.AppBaseActivity;
 import e.rahmanapyrr.gift_app.R;
 
-public class PaymentDetails extends AppCompatActivity {
+public class PaymentDetails extends AppBaseActivity {
 
     TextView txtId, txtAmount, txtStatus;
 

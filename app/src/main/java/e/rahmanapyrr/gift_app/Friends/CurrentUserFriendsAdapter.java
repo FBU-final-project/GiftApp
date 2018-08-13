@@ -44,7 +44,9 @@ public class CurrentUserFriendsAdapter extends RecyclerView.Adapter<CurrentUserF
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         final ParseUser user = CurrFriends.get(i);
         ParseUser friend = CurrFriends.get(i);
-        viewHolder.Username.setText(friend.getUsername());
+
+        viewHolder.Username.setText(friend.get("firstname") + " " + friend.get("lastname"));
+
         final ParseFile pic = user.getParseFile("ProfilePic");
         if(pic != null){
             Glide.with(context).load(pic.getUrl())
@@ -65,9 +67,10 @@ public class CurrentUserFriendsAdapter extends RecyclerView.Adapter<CurrentUserF
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             Username = (TextView)itemView.findViewById(R.id.currentFriendName);
+
             profilePic = itemView.findViewById(R.id.profile1);
+
 
             itemView.setOnClickListener(this);
         }
@@ -76,16 +79,15 @@ public class CurrentUserFriendsAdapter extends RecyclerView.Adapter<CurrentUserF
         public void onClick(View view) {
             int position = getAdapterPosition();
 
-
             if(position != RecyclerView.NO_POSITION){
             ParseUser user = CurrFriends.get(position);
                 Intent i = new Intent(context, ProfileActivity.class);
-                i.putExtra("username", user.getUsername());
+                i.putExtra("username", (user.get("firstname") + " " + user.get("lastname")));
                 //i.putExtra("photo", user.getImage().getUrl());
-                i.putExtra("parseuser", user);
                 i.putExtra("firstname", user.getString("firstname"));
                 i.putExtra("lastname", user.getString("lastname"));
                 i.putExtra("birthday", user.getString("birthdayString"));
+                i.putExtra("parseuser", user);
 
                 context.startActivity(i);
             }

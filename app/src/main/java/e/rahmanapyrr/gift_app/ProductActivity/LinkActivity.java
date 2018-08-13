@@ -21,6 +21,7 @@ public class LinkActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_link);
+
         buyButton = findViewById(R.id.buyNowButton);
         giftIdea = findViewById(R.id.linkSearch);
         linkBase = "https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Daps&field-keywords=";
@@ -36,33 +37,35 @@ public class LinkActivity extends AppCompatActivity {
         buyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 String searchID = makeSearchUrl();
 
                 takeToBuy(view);
                 makeSearchUrl();
             }
         });
+
     }
 
     // Take the recommendation from a user's profile and converts it into the ending for a url search
+
     public String makeSearchUrl(){
-        String recommendation = giftIdea.getText().toString();
-        String[] recommendationList = recommendation.split(" ");
+        String recommendation=giftIdea.getText().toString();
+        String[]recommendationList=recommendation.split(" ");
         String result = "";
-        int size = recommendationList.length;
+        int size=recommendationList.length;
         if(size>1){
-            for(int i=0; i<size-1; i++){
-                result += recommendationList[i];
-                result += "+";
-                }
-            result += recommendationList[size-1];
+            for(int i=0;i<size-1;i++){
+                result+=recommendationList[i];
+                result+="+";
+            }
+            result+=recommendationList[size-1];
         } else {
-            result += recommendationList[0];
+            result+=recommendationList[0];
             System.out.println(result);
         }
         return result;
-    }
+        }
+
 
     // Uses users recommendation ID created with makeSearchUrl() and creates a Browser intent that sends
     // user to the search page for that specific item on Amazon
@@ -73,4 +76,5 @@ public class LinkActivity extends AppCompatActivity {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(linkBase));
         startActivity(browserIntent);
     }
+
 }
