@@ -44,7 +44,7 @@ import e.rahmanapyrr.gift_app.models.User;
 
 public class AddFriends extends AppBaseActivity {
     ArrayList<User> users;
-    ArrayList<ParseUser> friends;
+    ArrayList<ParseUser> curr_friends;
     AddFriendsAdapter adapter;
     RecyclerView rvfriendNameOption;
     Bitmap.Config config;
@@ -94,35 +94,17 @@ public class AddFriends extends AppBaseActivity {
             e.printStackTrace();
         }
 
-        friends = new ArrayList<>();
         final ParseRelation<ParseUser> friend_relations = ParseUser.getCurrentUser().getRelation("FriendRelation");
         ParseQuery<ParseUser> friends_list = friend_relations.getQuery();
-        friends_list.findInBackground(new FindCallback<ParseUser>() {
-            @Override
-            public void done(List<ParseUser> objects, com.parse.ParseException e) {
-                if (e == null) {
-                    friends.clear();
-                    friends.addAll(objects);
-                    adapter.notifyDataSetChanged();
-                } else {
-                    e.printStackTrace();
-                }
-            }
-        });
 
-        for(ParseUser friend : friends){
-            try {
-                userQuery.whereNotEqualTo("username", friend.fetchIfNeeded().getUsername());
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-        }
+        userQuery.whereDoesNotMatchKeyInQuery("objectId", "objectId", friends_list);
 
         userQuery.orderByDescending("createdAt").findInBackground(new FindCallback<User>() {
             @Override
             public void done(List<User> objects, ParseException e) {
                 if (e == null) {
                     users.clear();
+                    System.out.println("hey again");
                     users.addAll(objects);
                     adapter.notifyDataSetChanged();
                 } else {
