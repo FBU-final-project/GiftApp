@@ -10,6 +10,8 @@
     <permission android:name="e.rahmanapyrr.gift_app.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
     <uses-permission android:name="com.example.gcm.permission.C2D_MESSAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
@@ -48,35 +50,30 @@
         <activity android:name=".Config.PaymentDetails" />
         <activity android:name=".Paypal.BuyingActivity" />
 
-        <receiver
-            android:name="com.google.android.gms.gcm.GcmReceiver"
-            android:exported="true"
-            android:permission="com.google.android.c2dm.permission.SEND" >
-            <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-                <category android:name="com.google.android.gms.gcm" />
-            </intent-filter>
-        </receiver>
         <service
-            android:name=".GCMMessageHandler"
-            android:exported="false" >
+            android:name="com.parse.fcm.ParseFirebaseInstanceIdService"
+            android:exported="true">
             <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
 
-        <service android:name=".FCMMessageHandler">
+        <service
+            android:name="com.parse.fcm.ParseFirebaseMessagingService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
         </service>
-        <service
-            android:name=".MyInstanceIDListenerService"
+
+        <receiver
+            android:name="com.parse.ParsePushBroadcastReceiver"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.google.android.gms.iid.InstanceID" />
+                <action android:name="com.parse.push.intent.RECEIVE" />
+                <action android:name="com.parse.push.intent.DELETE" />
+                <action android:name="com.parse.push.intent.OPEN" />
             </intent-filter>
-        </service>
+        </receiver>
         <service android:name=".RegistrationIntentService" android:exported="false"/>
 
 
