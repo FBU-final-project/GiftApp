@@ -20,7 +20,6 @@ import e.rahmanapyrr.gift_app.Calendar.CalendarActivity;
 import e.rahmanapyrr.gift_app.Friends.AddFriends;
 import e.rahmanapyrr.gift_app.Friends.CurrentUserFriends;
 import e.rahmanapyrr.gift_app.LogIn.LogInActivity;
-import e.rahmanapyrr.gift_app.Paypal.BuyingActivity;
 import e.rahmanapyrr.gift_app.Profile.PersonalPageActivity;
 
 public abstract class AppBaseActivity extends AppCompatActivity implements MenuItem.OnMenuItemClickListener {
@@ -136,11 +135,6 @@ public abstract class AppBaseActivity extends AppCompatActivity implements MenuI
                 ParseUser.logOut();
                 Intent r = new Intent(this, LogInActivity.class);
                 startActivity(r);
-                finish();
-                break;
-            case R.id.navPaypal:
-                Intent s = new Intent(this, BuyingActivity.class);
-                startActivity(s);
                 finish();
                 break;
         }
