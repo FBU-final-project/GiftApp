@@ -96,9 +96,7 @@ public class AddFriends extends AppBaseActivity {
 
         final ParseRelation<ParseUser> friend_relations = ParseUser.getCurrentUser().getRelation("FriendRelation");
         ParseQuery<ParseUser> friends_list = friend_relations.getQuery();
-
         userQuery.whereDoesNotMatchKeyInQuery("objectId", "objectId", friends_list);
-
         userQuery.orderByDescending("createdAt").findInBackground(new FindCallback<User>() {
             @Override
             public void done(List<User> objects, ParseException e) {
