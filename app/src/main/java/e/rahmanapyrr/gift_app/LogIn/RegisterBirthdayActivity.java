@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.parse.ParseACL;
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
@@ -131,7 +132,8 @@ public class RegisterBirthdayActivity extends AppCompatActivity implements DateP
         private void SignUp(String username, String password, String firstname, String
         lastname, String birthday){
             // Create a Parse User
-            ParseUser user = new ParseUser();
+            ParseUser user = ParseObject.create(ParseUser.class);
+//            ParseUser user = new ParseUser();
             // Set the core properties
             user.setUsername(username);
             user.setPassword(password);

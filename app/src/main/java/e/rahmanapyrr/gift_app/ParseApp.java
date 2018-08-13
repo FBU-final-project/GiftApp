@@ -6,21 +6,13 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.service.autofill.SaveCallback;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 
-import com.google.firebase.iid.FirebaseInstanceId;
 import com.parse.Parse;
-import com.parse.ParseException;
-import com.parse.ParseInstallation;
 import com.parse.ParseObject;
-import com.parse.ParsePush;
 
 import e.rahmanapyrr.gift_app.Friends.CurrentUserFriends;
 import e.rahmanapyrr.gift_app.models.User;
-import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
 
 public class ParseApp extends Application {
 
@@ -31,20 +23,11 @@ public class ParseApp extends Application {
         // used whenever creating a new class like our posts in the instagram app
         ParseObject.registerSubclass(User.class);
 
-        // Use for troubleshooting -- remove this line for production
-        Parse.setLogLevel(Parse.LOG_LEVEL_DEBUG);
 
-        //REGISTERING ANOTHER SUBCLASS HERE,  I THINK THE CODEBASE GETS CONFUSED WHEN I TRY TO SIGNUP A NEW USER
+        // RAHMANA IS REGISTERING ANOTHER SUBCLASS HERE AND WHEN SHE DOES I THINK THE CODEBASE GETS CONFUSED WHEN I TRY TO SIGNUP A NEW USER
         // SO WE NEED TO RENAME THIS OR DO SOMETHING BECAUSE IF I UNCOMMENT IT, IT EFFS EVERYTHING UP
         // ParseObject.registerSubclass(User.class);
 
-        // Use for monitoring Parse OkHttp traffic
-        // Can be Level.BASIC, Level.HEADERS, or Level.BODY
-        // See http://square.github.io/okhttp/3.x/logging-interceptor/ to see the options.
-        OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
-        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        builder.networkInterceptors().add(httpLoggingInterceptor);
 
         final Parse.Configuration configuration = new Parse.Configuration.Builder(this)
                 .applicationId("giftapp")
@@ -54,24 +37,46 @@ public class ParseApp extends Application {
 
         Parse.initialize(configuration);
 
+        // Configure the channel
+        int importance = NotificationManager.IMPORTANCE_DEFAULT;
+        NotificationChannel channel = new NotificationChannel("myChannelId", "My Channel", importance);
+        channel.setDescription("Reminders");
+// Register the channel with the notifications manager
+        NotificationManager mNotificationManager =
+                (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        mNotificationManager.createNotificationChannel(channel);
 
-    ParsePush.subscribeInBackground("", new com.parse.SaveCallback() {
-        @Override
-        public void done(ParseException e) {
-            // callback to confirm subscription
-
-            if (e == null) {
-                Log.d("com.parse.push", "successfully subscribed to the broadcast channel.");
-            } else {
-                Log.e("com.parse.push", "failed to subscribe for push", e);
-            }
-        }
-    });
-
-
-    final ParseInstallation installation = ParseInstallation.getCurrentInstallation();
-        if(installation.getDeviceToken()==null) {
-        installation.setDeviceToken(FirebaseInstanceId.getInstance().getToken());
+        createNotification(8,"Hey!!", "open the app");
     }
-        installation.saveInBackground();
-}}
+
+    private void createNotification(int nId, String title, String body) {
+
+        Intent intent = new Intent(this, CurrentUserFriends.class);
+        int requestID = (int) System.currentTimeMillis(); //unique requestID to differentiate between various notification with same NotifId
+        int flags = PendingIntent.FLAG_CANCEL_CURRENT; // cancel old intent and create new one
+        PendingIntent pIntent = PendingIntent.getActivity(this, requestID, intent, flags);
+
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
+                this, "channelId")
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle(title)
+                .setContentText(body)
+                .setAutoCancel(true)
+                .setContentIntent(pIntent);
+
+        NotificationManager mNotificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        // mId allows you to update the notification later on.
+        mNotificationManager.notify(nId, mBuilder.build());
+    }
+
+
+
+    public void registerUP(){
+        ParseObject.registerSubclass(User.class);
+    }
+
+
+
+
+}
