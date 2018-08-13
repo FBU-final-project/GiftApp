@@ -2,7 +2,6 @@ package e.rahmanapyrr.gift_app.Profile;
 
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -27,13 +26,14 @@ import com.parse.SaveCallback;
 import java.util.ArrayList;
 import java.util.List;
 
+import e.rahmanapyrr.gift_app.AppBaseActivity;
 import e.rahmanapyrr.gift_app.R;
 import e.rahmanapyrr.gift_app.models.Favorites;
 import e.rahmanapyrr.gift_app.models.User;
 
 import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends AppBaseActivity {
 
     TextView myName;
     TextView myUsername;
@@ -142,9 +142,21 @@ public class ProfileActivity extends AppCompatActivity {
             public void done(List<Favorites> objects, com.parse.ParseException e) {
                 if (e == null) {
                     faves.clear();
-                    faves.addAll(objects);
-                    favAdapter.notifyDataSetChanged();
-                } else {
+                    if (objects.size() == 0) {
+                        System.out.println("nooo");
+                    } else {
+                        for (Favorites i : objects) {
+                            System.out.println(i);
+                            System.out.println(i.getItem());
+                            if (i.getItem() == null || i.getItem().equals("")) {
+                                System.out.println("ahhhhh");
+                            } else {
+                                faves.add(i);
+                            }
+                        }
+                        favAdapter.notifyDataSetChanged();
+                    }
+                }else {
                     e.printStackTrace();
                 }
             }
